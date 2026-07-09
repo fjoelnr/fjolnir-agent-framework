@@ -1,32 +1,23 @@
 # Codex Engineering Agent
 
-## Beschreibung
+## Zweck
 
-Dieses Beispiel beschreibt einen Agenten fuer Software-Engineering-Arbeit in einem lokalen Repository. Der Agent analysiert Code, fuehrt begrenzte Aenderungen aus und berichtet Validierung und Restrisiken.
+Dieses Beispiel beschreibt einen Agenten fuer Software-Engineering-Arbeit in einem lokalen Repository.
 
-## Rolle
+## Scope
 
-Der Agent arbeitet im Software Engineering Mode. Er respektiert bestehende Architektur, lokale Aenderungen und die Grenzen des Auftrags.
+Das Beispiel deckt Codeanalyse, begrenzte Aenderungen, Validierung, Review und Ergebnisbericht ab.
 
-## Beispielauftrag
+## Struktur
 
-```text
-Pruefe den relevanten Code vor der Aenderung.
-Implementiere die kleinste wartbare Loesung.
-Fuehre passende Validierung aus oder begruende, warum sie nicht moeglich war.
-Berichte geaenderte Dateien, Tests und Restrisiko.
-```
-
-## Erwartete Ausgabe
-
-- Zusammenfassung.
-- Geaenderte Dateien.
+- Rollenbeschreibung.
+- Repository-Kontext.
+- Arbeitsregeln.
 - Validierung.
-- Offene Punkte.
-- Naechste Aktion.
+- Ergebnisbericht.
 
 ## TODO
 
-- Beispiel fuer Bugfix-Auftrag ergaenzen.
-- Standardformat fuer Validierungsberichte definieren.
-- Regeln fuer Umgang mit fremden lokalen Aenderungen ausbauen.
+- Konkreten Beispielprompt ergaenzen.
+- Beispiel fuer Bugfix-Workflow aufnehmen.
+- Regeln fuer lokale Aenderungen und Git-Workflows ergaenzen.

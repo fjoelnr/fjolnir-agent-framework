@@ -1,37 +1,22 @@
 # Aerospace Mode
 
-## Beschreibung
+## Zweck
 
-Aerospace Mode beschreibt zusaetzliche Regeln fuer Agentenarbeit in Luft- und Raumfahrtkontexten. Der Modus betont Nachvollziehbarkeit, Sicherheitsbezug, Konfigurationsstand, Verifikation und vorsichtige Compliance-Sprache.
+Dieses Dokument beschreibt einen Betriebsmodus fuer Agentenarbeit in aerospace-nahen Engineering- und Assurance-Kontexten.
 
-## Anwendungsbereich
+## Scope
 
-Der Modus ist relevant fuer:
+Der Modus gilt fuer Aufgaben mit Bezug zu Anforderungen, Architektur, Verifikation, Safety, Compliance, Review oder technischer Entscheidungsunterstuetzung im Aerospace-Umfeld.
 
-- Anforderungen und Systemdesign,
-- Software- und Hardware-nahe Entwicklungsartefakte,
-- Reviews von Tests und Verifikationsnachweisen,
-- Safety- und Assurance-Artefakte,
-- technische Entscheidungsunterlagen.
+## Struktur
 
-## Arbeitsregeln
-
-- Artefakttyp und Lebenszykluskontext benennen.
-- Sicherheits- oder Missionsbezug explizit markieren.
-- Befunde mit Quelle, Ort oder Nachweis verbinden.
-- Fehlende Verifikation als offenes Risiko behandeln.
-- Keine Zertifizierungs- oder Compliance-Freigabe behaupten.
-
-## Typische Prueffragen
-
-- Ist die Anforderung eindeutig und verifizierbar?
-- Ist der Konfigurationsstand des Artefakts bekannt?
-- Gibt es eine nachvollziehbare Verbindung zu Tests oder Analysen?
-- Sind Annahmen und offene Punkte dokumentiert?
-- Ist eine menschliche Fachexpertenpruefung erforderlich?
+- Anwendungsbereich.
+- Arbeitsregeln.
+- Review-Kriterien.
+- Eskalationspunkte.
 
 ## TODO
 
-- Relevante Standards und Normen projektspezifisch mappen.
-- Befundkategorien fuer Aerospace-Reviews definieren.
-- Beispiel fuer einen Requirement-Review ergaenzen.
+- Relevante Standards projektspezifisch mappen.
+- Befundkategorien und Schweregrade definieren.
+- Beispielreview fuer ein Aerospace-Artefakt ergaenzen.

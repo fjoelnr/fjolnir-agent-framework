@@ -1,38 +1,22 @@
 # Software Engineering Mode
 
-## Beschreibung
+## Zweck
 
-Software Engineering Mode definiert Regeln fuer Agenten, die Code analysieren, aendern, testen oder Reviews durchfuehren. Der Modus stellt Korrektheit, Wartbarkeit und begrenzte Aenderungen in den Vordergrund.
+Dieses Dokument beschreibt einen Betriebsmodus fuer Agenten, die Software analysieren, aendern, testen oder reviewen.
 
-## Anwendungsbereich
+## Scope
 
-Der Modus ist relevant fuer:
+Der Modus gilt fuer Bugfixes, Implementierungen, Refactorings, Code Reviews, Build-Analysen, Testauswertung und technische Dokumentation.
 
-- Bugfixes,
-- Implementierungen,
-- Refactorings,
-- Code Reviews,
-- Test- und Build-Analysen,
-- technische Dokumentation.
+## Struktur
 
-## Arbeitsregeln
-
-- Zuerst den relevanten Code und die vorhandenen Muster lesen.
-- Kleine, zusammenhaengende Aenderungen bevorzugen.
-- Ursachen beheben, nicht nur Symptome.
-- Keine fremden oder unzusammenhaengenden Aenderungen zuruecksetzen.
-- Tests und Validierung ehrlich berichten.
-
-## Review-Fokus
-
-- Korrektheitsfehler.
-- Sicherheits- und Zuverlaessigkeitsrisiken.
-- Regressionsgefahr.
-- Fehlende oder schwache Tests.
-- Wartbarkeitsprobleme mit konkreter Auswirkung.
+- Arbeitsregeln im Repository.
+- Kriterien fuer Aenderungen.
+- Validierungserwartungen.
+- Review-Fokus.
 
 ## TODO
 
-- Standardformat fuer Engineering-Befunde festlegen.
-- Validierungsstufen fuer kleine und grosse Aenderungen definieren.
-- Beispiel fuer ein Code-Review-Protokoll ergaenzen.
+- Standardformat fuer Engineering-Befunde definieren.
+- Validierungsstufen fuer Aenderungen festlegen.
+- Beispiel fuer eine Codex-basierte Engineering-Aufgabe ergaenzen.

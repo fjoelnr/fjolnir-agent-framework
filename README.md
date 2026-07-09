@@ -1,81 +1,81 @@
-# fjolnir-agent-framework
+# Fjölnir Agent Framework (FAF)
 
-## Projektziel
+**Fjölnir Agent Framework (FAF) – A Modular Constitution Framework for Trustworthy AI Agents**
 
-`fjolnir-agent-framework` ist ein modulares Agent-Constitution-Framework fuer professionelle KI-Agenten. Es soll helfen, Agenten so zu beschreiben, zu betreiben und zu pruefen, dass technische Qualitaet, Nachvollziehbarkeit, Trustworthy AI, Aerospace Compliance und reproduzierbare Arbeitsweise systematisch beruecksichtigt werden.
+## Vision
 
-Das Projekt ist kein einzelner Agent und kein Prompt-Sammelsurium. Es ist ein Governance- und Engineering-Rahmen fuer Agentenrollen, Betriebsmodi, Aufgabenbriefings, Review-Kriterien und Qualitaetssicherung.
+FAF defines a structured foundation for professional AI agents that must operate under explicit rules, traceable decisions, and reviewable outputs. The framework treats agent behavior as an engineering and governance concern, not as an informal prompt-writing exercise.
 
-## Grundidee
+The long-term vision is a reusable constitution framework for agents used in technical, regulated, safety-relevant, or assurance-heavy environments.
 
-Professionelle Agenten brauchen mehr als eine Rollenbeschreibung. Sie benoetigen stabile Verhaltensregeln, klare Grenzen, nachvollziehbare Entscheidungen und pruefbare Ergebnisse.
+## Goals
 
-Das Framework trennt deshalb drei Ebenen:
+- Define stable operating principles for professional agents.
+- Separate constitution, role, operating mode, task briefing, and review criteria.
+- Support traceability from task input to output and follow-up decision.
+- Provide reusable templates for repeatable agent configuration.
+- Make uncertainty, assumptions, risks, and evidence visible.
+- Establish a basis for engineering review and governance review.
 
-- Constitution: dauerhafte Grundregeln fuer Verhalten, Nachvollziehbarkeit und Eskalation.
-- Mode: fachlicher Betriebsmodus, zum Beispiel Aerospace, AI Assurance, Software Engineering oder Research.
-- Task Briefing: konkrete Aufgabe mit Kontext, Eingaben, Grenzen, Akzeptanzkriterien und Ausgabeformat.
+## Architecture
 
-Diese Trennung macht Agenten leichter wartbar, vergleichbar und reviewbar.
+FAF is organized into four practical layers:
 
-## Modulares Konzept
+- Constitution: baseline behavioral rules for all agents.
+- Modes: domain-specific operating rules for contexts such as aerospace, AI assurance, software engineering, and research.
+- Templates: reusable structures for system prompts, roles, task briefings, and reviews.
+- Checks: lightweight review artifacts for prompt quality and consistency.
 
-Die Repository-Struktur ist bewusst einfach gehalten:
+The repository mirrors this architecture:
 
 ```text
-docs/       Grundregeln, Betriebsmodi, Entscheidungslogik und Prompt-Muster
-templates/  Wiederverwendbare Vorlagen fuer Rollen, Briefings und Reviews
-examples/   Beispielkonfigurationen fuer typische Agenten
-tests/      Checklisten fuer Prompt-Qualitaet und Konsistenzpruefung
+docs/       Constitution, operating modes, writing rules, decision logic, and prompt patterns
+templates/  Reusable prompt, role, task, and review skeletons
+examples/   Example agent configurations
+tests/      Checklist-based quality and consistency reviews
 ```
 
-Jedes Modul soll einzeln nutzbar sein. Ein Team kann beispielsweise nur den Software-Engineering-Modus verwenden oder Aerospace Mode und AI Assurance Mode in einem strengeren Review-Prozess kombinieren.
+## Design Principles
 
-## Zielgruppen
+- Explicit scope before autonomous action.
+- Evidence and assumptions separated from recommendations.
+- Traceable outputs instead of opaque conclusions.
+- Conservative wording for compliance, safety, and assurance claims.
+- Modular documents that can be reviewed and versioned independently.
+- Clear escalation when authority, evidence, or risk boundaries are exceeded.
 
-Das Framework richtet sich an:
+## Planned Modules
 
-- Engineering-Teams, die KI-Agenten in Entwicklungsprozesse integrieren.
-- Safety- und Assurance-Verantwortliche, die nachvollziehbare Agentenarbeit benoetigen.
-- Aerospace- und Systems-Engineering-Teams mit hohen Anforderungen an Reviewbarkeit.
-- Governance-, Risk- und Compliance-Funktionen, die Agentenverhalten dokumentieren wollen.
-- Research-Teams, die Quellenlage, Unsicherheit und Schlussfolgerungen sauber trennen muessen.
-
-## Erste Nutzung
-
-1. `docs/FJOLNIR_CONSTITUTION.md` lesen und als verbindliche Grundlage uebernehmen oder projektspezifisch anpassen.
-2. Einen Betriebsmodus aus `docs/` auswaehlen.
-3. Mit `templates/agent_role_template.md` eine Agentenrolle definieren.
-4. Mit `templates/task_briefing_template.md` eine konkrete Aufgabe beschreiben.
-5. Das Ergebnis mit `tests/prompt_quality_checklist.md` und `tests/consistency_review.md` pruefen.
-6. Bei Bedarf ein Beispiel aus `examples/` als Startpunkt verwenden.
+- Core constitution for baseline agent behavior.
+- Writing guide for clear and reviewable agent output.
+- Aerospace mode for safety- and compliance-sensitive engineering work.
+- AI assurance mode for trustworthy AI evaluation and governance.
+- Software engineering mode for repository-based implementation and review.
+- Research mode for evidence-based technical research.
+- Decision framework for structured option evaluation.
+- Prompt patterns for reusable agent configuration.
 
 ## Roadmap
 
-### Kurzfristig
+### Phase 1: Foundation
 
-- Inhalte der Betriebsmodi fachlich schaerfen.
-- Einheitliche Terminologie fuer Constitution, Mode, Role und Briefing definieren.
-- Review-Checklisten um konkrete Bewertungskriterien erweitern.
+- Establish repository structure.
+- Define initial constitution and operating modes.
+- Provide first templates and examples.
+- Add basic quality and consistency checklists.
 
-### Mittelfristig
+### Phase 2: Reviewability
 
-- Beispielagenten fuer weitere Governance- und Engineering-Szenarien ergaenzen.
-- Versionierte Prompt-Artefakte und Aenderungsregeln einfuehren.
-- Minimalen Prozess fuer Agentenfreigabe und periodische Revalidierung beschreiben.
+- Add criteria for severity, confidence, and escalation.
+- Expand examples with realistic task briefings.
+- Introduce versioning rules for agent constitutions and modes.
 
-### Langfristig
+### Phase 3: Assurance Use
 
-- Mapping zu relevanten Standards und Normen ausarbeiten.
-- Testbare Qualitaetskriterien fuer Agentenverhalten definieren.
-- Referenzprozess fuer auditierbare Agentenarbeit in regulierten Umgebungen erstellen.
+- Map framework artifacts to assurance evidence.
+- Add governance workflows for approval and revalidation.
+- Define practical review gates for high-impact agent use.
 
 ## Status
 
-Initiale Projektstruktur. Die Inhalte sind als ernsthafte Arbeitsgrundlage gedacht, muessen aber vor produktiver oder regulierter Nutzung projektspezifisch geprueft und erweitert werden.
-
-## TODO
-
-- Projektlizenz final festlegen.
-- Verantwortliche Rollen fuer Pflege und Review definieren.
-- Erste reale Anwendung mit einem Pilot-Agenten dokumentieren.
+Initial repository structure. The framework is not yet a complete assurance method or compliance standard. It is a starting point for building reviewable, modular, and governed agent configurations.

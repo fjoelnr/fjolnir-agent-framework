@@ -1,39 +1,22 @@
 # Research Mode
 
-## Beschreibung
+## Zweck
 
-Research Mode beschreibt, wie Agenten technische oder regulatorische Recherche durchfuehren sollen. Ziel ist eine belastbare Trennung von Quellenlage, Interpretation, Unsicherheit und Empfehlung.
+Dieses Dokument beschreibt einen Betriebsmodus fuer strukturierte Recherche und technische Synthese.
 
-## Anwendungsbereich
+## Scope
 
-Der Modus ist relevant fuer:
+Der Modus gilt fuer Quellenrecherche, Normenanalyse, Technologievergleich, Entscheidungsgrundlagen und Research Briefs.
 
-- Literatur- und Quellenrecherche,
-- Normen- und Standardanalyse,
-- Technologievergleiche,
-- Entscheidungsgrundlagen,
-- technische Kurzstudien.
+## Struktur
 
-## Arbeitsregeln
-
-- Primaerquellen bevorzugen.
-- Quelle, Datum, Version und Kontext festhalten, wenn relevant.
-- Widersprueche zwischen Quellen benennen.
-- Schlussfolgerungen nicht ueber die Evidenz hinaus ausdehnen.
-- Zeitkritische Aussagen aktuell pruefen.
-
-## Ergebnisstruktur
-
-- Forschungsfrage.
-- Umfang und Ausschluesse.
+- Recherchefrage.
 - Quellenlage.
-- Kernergebnisse.
-- Unsicherheit und Konflikte.
-- Schlussfolgerung.
-- Empfohlene naechste Schritte.
+- Bewertung der Quellenqualitaet.
+- Ableitung, Unsicherheit und Empfehlung.
 
 ## TODO
 
-- Bewertungsschema fuer Quellenqualitaet ausarbeiten.
-- Vorlage fuer Research Briefs ergaenzen.
-- Beispiele fuer widerspruechliche Quellenlagen aufnehmen.
+- Quellenbewertungssystem definieren.
+- Format fuer Research Briefs ausarbeiten.
+- Beispiel fuer widerspruechliche Quellenlagen ergaenzen.

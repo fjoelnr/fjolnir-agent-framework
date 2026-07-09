@@ -1,22 +1,22 @@
 # Changelog
 
-## Beschreibung
+## Zweck
 
-Dieses Dokument erfasst relevante Aenderungen am `fjolnir-agent-framework`.
+Dieses Dokument verfolgt relevante Aenderungen am Fjölnir Agent Framework.
 
-## 0.1.0 - 2026-07-09
+## Scope
 
-### Added
+Der Changelog umfasst strukturelle Aenderungen, neue Module, wesentliche inhaltliche Anpassungen und spaetere Releases.
 
-- Initiale Repository-Struktur angelegt.
-- Deutsche README mit Projektziel, Grundidee, modularem Konzept, Zielgruppen, erster Nutzung und Roadmap erstellt.
-- Grundlegende Dokumente fuer Constitution, Betriebsmodi, Entscheidungslogik und Prompt Patterns angelegt.
-- Templates fuer System Prompt, Agentenrolle, Task Briefing und Review Checklist erstellt.
-- Beispielagenten fuer Aerospace Review, Research und Codex Engineering ergaenzt.
-- Checklisten fuer Prompt-Qualitaet und Konsistenzpruefung angelegt.
+## Struktur
+
+- Version oder Datum.
+- Kategorie der Aenderung.
+- Kurze Beschreibung.
+- Relevante betroffene Dateien oder Module.
 
 ## TODO
 
-- Versionierungsmodell festlegen.
-- Aenderungskategorien vereinheitlichen.
-- Release-Prozess dokumentieren.
+- Versionierungsschema festlegen.
+- Kategorien fuer Added, Changed, Deprecated und Removed definieren.
+- Erste Release-Notizen nach Abschluss der Foundation-Phase ergaenzen.

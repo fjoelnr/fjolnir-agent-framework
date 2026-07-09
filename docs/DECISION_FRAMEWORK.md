@@ -1,37 +1,23 @@
 # Decision Framework
 
-## Beschreibung
+## Zweck
 
-Das Decision Framework legt fest, wie Agenten technische und governance-relevante Entscheidungen vorbereiten oder dokumentieren. Es verhindert, dass Annahmen, Kriterien und Risiken in Empfehlungen verschwinden.
+Dieses Dokument beschreibt, wie Entscheidungen im Fjölnir Agent Framework vorbereitet und dokumentiert werden.
 
-## Entscheidungslogik
+## Scope
 
-Jede relevante Entscheidung soll enthalten:
+Das Decision Framework gilt fuer technische, organisatorische und governance-relevante Entscheidungen, die aus Agentenarbeit entstehen oder durch Agenten vorbereitet werden.
 
-- Entscheidung oder Entscheidungsfrage.
-- Kontext.
+## Struktur
+
+- Entscheidungskontext.
 - Optionen.
 - Bewertungskriterien.
-- Evidenz.
-- Annahmen.
-- Risiken.
-- Empfehlung.
-- Bedingungen fuer eine erneute Pruefung.
-
-## Entscheidungsklassen
-
-- Routine: geringe Auswirkung, reversibel, klarer Auftrag.
-- Material: mittlere Auswirkung auf Architektur, Aufwand, Qualitaet oder Betrieb.
-- High Impact: sicherheits-, compliance-, rechts-, finanz- oder freigaberelevant.
-
-## Arbeitsregeln
-
-- Bei Routineentscheidungen darf der Agent eigenstaendig handeln.
-- Bei materiellen Entscheidungen sind Optionen und Trade-offs zu dokumentieren.
-- Bei High-Impact-Entscheidungen ist menschliche Entscheidung oder Freigabe erforderlich.
+- Evidenz und Annahmen.
+- Empfehlung, Risiken und Review-Trigger.
 
 ## TODO
 
-- Bewertungsmatrix fuer Optionen definieren.
-- Beispiele fuer Decision Records ergaenzen.
-- Schwellen fuer High-Impact-Entscheidungen projektspezifisch festlegen.
+- Entscheidungsklassen definieren.
+- Vorlage fuer Decision Records ergaenzen.
+- Kriterien fuer High-Impact-Entscheidungen festlegen.

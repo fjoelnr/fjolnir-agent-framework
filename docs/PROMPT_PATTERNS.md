@@ -1,43 +1,22 @@
 # Prompt Patterns
 
-## Beschreibung
+## Zweck
 
-Prompt Patterns sind wiederverwendbare Bausteine fuer Agentenkonfigurationen. Sie sollen helfen, Rollen, Modi und Aufgaben konsistent zu kombinieren.
+Dieses Dokument sammelt wiederverwendbare Prompt-Muster fuer Agentenkonfigurationen im Fjölnir Agent Framework.
 
-## Pattern: Constitution + Mode + Briefing
+## Scope
 
-```text
-Folge der Fjolnir Constitution.
-Arbeite im Modus: [MODE].
-Bearbeite das folgende Task Briefing: [BRIEFING].
-Gib das Ergebnis im Format [FORMAT] aus.
-```
+Die Patterns gelten fuer Systemprompts, Rollenbeschreibungen, Task Briefings, Reviews und wiederkehrende Arbeitsablaeufe.
 
-## Pattern: Evidence-Bound Answer
+## Struktur
 
-```text
-Antworte nur auf Basis der bereitgestellten Eingaben.
-Kennzeichne Fakten, Annahmen, Schlussfolgerungen, Risiken und Empfehlungen.
-Wenn Evidenz fehlt, benenne die Luecke.
-```
-
-## Pattern: Review Findings
-
-```text
-Pruefe das Artefakt gegen die genannten Kriterien.
-Sortiere Befunde nach Schweregrad.
-Jeder Befund enthaelt Ort, Problem, Evidenz, Auswirkung und Empfehlung.
-```
-
-## Pattern: Bounded Autonomy
-
-```text
-Arbeite innerhalb des beschriebenen Auftrags eigenstaendig.
-Pausiere bei sicherheits-, compliance-, kosten- oder freigaberelevanten Entscheidungen.
-```
+- Pattern-Name.
+- Einsatzkontext.
+- Prompt-Struktur.
+- Risiken und Hinweise zur Verwendung.
 
 ## TODO
 
-- Weitere Patterns fuer Assurance, Research und Engineering ergaenzen.
-- Pattern-Qualitaet mit Checklisten aus `tests/` verknuepfen.
-- Beispiele fuer schlechte und verbesserte Prompts aufnehmen.
+- Erste Pattern-Bibliothek ausarbeiten.
+- Beispiele fuer gute und schlechte Anwendungen aufnehmen.
+- Patterns mit Review-Checklisten verbinden.

@@ -1,35 +1,23 @@
 # Aerospace Review Agent
 
-## Beschreibung
+## Zweck
 
-Dieses Beispiel beschreibt einen Agenten fuer Reviews in Aerospace-Kontexten. Der Agent prueft Artefakte auf Nachvollziehbarkeit, Verifizierbarkeit, Sicherheitsbezug und vorsichtige Compliance-Sprache.
+Dieses Beispiel beschreibt einen Agenten fuer Reviews aerospace-naher Engineering-Artefakte.
 
-## Rolle
+## Scope
 
-Der Agent unterstuetzt Reviews von Anforderungen, technischen Konzepten, Testnachweisen und Safety-nahen Artefakten. Er ersetzt keine formale Freigabe und keine Zertifizierungsentscheidung.
+Das Beispiel deckt Review-Unterstuetzung fuer Anforderungen, Nachweise, technische Konzepte und Safety-nahe Artefakte ab.
 
-## Beispielauftrag
+## Struktur
 
-```text
-Pruefe das bereitgestellte Artefakt im Aerospace Mode.
-Ordne Befunde nach Schweregrad.
-Kennzeichne fehlende Nachweise, unklare Anforderungen und offene Safety-Fragen.
-Formuliere keine formale Compliance-Freigabe.
-```
-
-## Erwartete Ausgabe
-
-- Scope.
-- Eingaben.
-- Annahmen.
-- Kriterien.
-- Befunde.
-- Offene Nachweise.
-- Risiken.
-- Naechste Schritte.
+- Rollenbeschreibung.
+- Betriebsmodus.
+- Typische Eingaben.
+- Erwartete Ausgaben.
+- Grenzen und Eskalation.
 
 ## TODO
 
-- Beispiel mit konkreter Anforderung aufnehmen.
-- Mapping auf projektspezifische Standards ergaenzen.
-- Review-Skala fuer Befunde definieren.
+- Konkreten Beispielprompt ergaenzen.
+- Beispielhafte Eingabe und Review-Ausgabe aufnehmen.
+- Grenzen gegen formale Zertifizierungsentscheidungen klarer beschreiben.

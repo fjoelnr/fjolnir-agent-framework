@@ -1,38 +1,23 @@
 # Consistency Review
 
-## Beschreibung
+## Zweck
 
-Diese Checkliste prueft, ob Rollen, Modi, Templates und Prompts konsistent zur Fjolnir Constitution sind.
+Diese Checkliste prueft, ob Framework-Artefakte konsistent mit der Fjolnir Constitution und den gewaehlten Modi sind.
 
-## Constitution Alignment
+## Scope
 
-- [ ] Keine erfundenen Quellen, Tests oder Freigaben erlaubt.
-- [ ] Unsicherheit muss benannt werden.
-- [ ] Auftrag und Grenzen sind klar.
-- [ ] Eskalation ist fuer High-Impact-Faelle definiert.
+Die Checkliste gilt fuer Rollen, Betriebsmodi, Templates, Beispiele und zusammengesetzte Agentenkonfigurationen.
 
-## Mode Alignment
+## Struktur
 
-- [ ] Der ausgewaehlte Modus passt zur Aufgabe.
-- [ ] Modusspezifische Risiken werden adressiert.
-- [ ] Das Ausgabeformat unterstuetzt Review und Nachvollziehbarkeit.
-- [ ] Expert Review ist bei Bedarf vorgesehen.
-
-## Task Alignment
-
-- [ ] Ziel, Kontext und Eingaben sind ausreichend.
-- [ ] Akzeptanzkriterien sind pruefbar.
-- [ ] Out-of-Scope-Punkte fehlen nicht.
-- [ ] Annahmen sind sichtbar.
-
-## Ergebnis
-
-- [ ] Accept.
-- [ ] Accept with Changes.
-- [ ] Revise and Review Again.
+- Constitution Alignment.
+- Mode Alignment.
+- Task Alignment.
+- Output Alignment.
+- Entscheidung und offene Punkte.
 
 ## TODO
 
-- Review-Ergebnis mit konkretem Befundformat verbinden.
-- Konsistenzpruefung fuer mehrere Modi gleichzeitig definieren.
-- Beispielreview einer Agentenrolle aufnehmen.
+- Konkrete Konsistenzpruefpunkte ausformulieren.
+- Review-Entscheidungen definieren.
+- Beispiel einer vollstaendigen Konsistenzpruefung aufnehmen.

@@ -1,41 +1,26 @@
 # Task Briefing Template
 
-## Beschreibung
+## Zweck
 
-Diese Vorlage beschreibt eine konkrete Aufgabe fuer einen Agenten. Sie soll verhindern, dass Ziel, Kontext, Grenzen und Akzeptanzkriterien unausgesprochen bleiben.
+Diese Vorlage beschreibt die Struktur eines konkreten Aufgabenbriefings fuer einen Agenten.
 
-## Vorlage
+## Scope
 
-```text
-Objective:
+Die Vorlage gilt fuer einzelne Aufgaben, Reviews, Analysen, Implementierungen und Research-Arbeiten.
 
-Context:
+## Struktur
 
-In Scope:
-
-Out of Scope:
-
-Inputs:
-
-Constraints:
-
-Acceptance Criteria:
-
-Required Output Format:
-
-Risk Level:
-
-Escalation Rules:
-```
-
-## Hinweise
-
-- Akzeptanzkriterien muessen beobachtbar oder pruefbar sein.
-- Risk Level sollte mindestens Routine, Material oder High Impact sein.
-- Fehlende Eingaben sind als offene Punkte zu dokumentieren.
+- Objective.
+- Context.
+- Inputs.
+- Constraints.
+- Acceptance Criteria.
+- Output Format.
+- Risk Level.
+- Escalation Rules.
 
 ## TODO
 
-- Beispielbriefings fuer die vorhandenen Example Agents ergaenzen.
-- Risikoklassen genauer beschreiben.
-- Check gegen `prompt_quality_checklist.md` automatisierbar machen.
+- Ausfuellbares Briefing-Template ergaenzen.
+- Risikostufen beschreiben.
+- Beispielbriefings fuer die vorhandenen Agenten aufnehmen.

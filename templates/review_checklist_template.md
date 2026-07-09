@@ -1,28 +1,25 @@
 # Review Checklist Template
 
-## Beschreibung
+## Zweck
 
-Diese Vorlage dient zur strukturierten Pruefung von Agentenrollen, Prompts, technischen Artefakten oder Review-Ergebnissen.
+Diese Vorlage beschreibt die Struktur einer Review-Checkliste fuer FAF-Artefakte.
 
-## Vorlage
+## Scope
 
-| Feld | Inhalt |
-| --- | --- |
-| Review Target | [Artefakt, Version, Pfad oder ID] |
-| Review Scope | [Pruefumfang] |
-| Criteria | [Anforderungen oder Bewertungskriterien] |
-| Evidence Reviewed | [Gepruefte Nachweise] |
-| Findings | [Befunde] |
-| Decision | [Accept, Accept with Changes, Revise] |
+Die Vorlage gilt fuer Reviews von Prompts, Rollen, Modi, Task Briefings, Beispielen und spaeteren Governance-Artefakten.
 
-## Befundformat
+## Struktur
 
-| ID | Schweregrad | Ort | Befund | Evidenz | Empfehlung | Status |
-| --- | --- | --- | --- | --- | --- | --- |
-| F-001 | [High/Medium/Low] | [Ort] | [Problem] | [Nachweis] | [Massnahme] | Open |
+- Review Target.
+- Review Scope.
+- Kriterien.
+- Evidenz.
+- Befunde.
+- Entscheidung.
+- Offene Punkte.
 
 ## TODO
 
-- Schweregrade verbindlich definieren.
-- Review-Entscheidungen mit Freigabeprozess verknuepfen.
-- Beispiel einer ausgefuellten Checkliste aufnehmen.
+- Ausfuellbares Tabellenformat definieren.
+- Schweregrade fuer Befunde festlegen.
+- Beispiel einer ausgefuellten Review-Checkliste ergaenzen.

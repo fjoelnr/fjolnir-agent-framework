@@ -1,39 +1,26 @@
 # Agent Role Template
 
-## Beschreibung
+## Zweck
 
-Diese Vorlage beschreibt eine Agentenrolle. Sie trennt Mission, Scope, Eingaben, Ausgaben und Eskalationsbedingungen.
+Diese Vorlage beschreibt die Struktur einer Agentenrolle innerhalb des Fjölnir Agent Framework.
 
-## Vorlage
+## Scope
 
-```text
-Rollenname:
+Die Vorlage gilt fuer Rollen, die Aufgaben, Grenzen, Eingaben, Ausgaben und Entscheidungsbefugnisse eines Agenten festlegen.
 
-Mission:
+## Struktur
 
-Betriebsmodus:
-
-In Scope:
-
-Out of Scope:
-
-Eingaben:
-
-Erwartete Ausgaben:
-
-Qualitaetskriterien:
-
-Eskalationsbedingungen:
-```
-
-## Hinweise
-
-- Die Rolle soll eng genug sein, um pruefbar zu bleiben.
-- Entscheidungsbefugnisse muessen ausdruecklich genannt werden.
-- Out-of-Scope-Punkte sind genauso wichtig wie In-Scope-Punkte.
+- Rollenname.
+- Mission.
+- In Scope.
+- Out of Scope.
+- Eingaben.
+- Ausgaben.
+- Qualitaetskriterien.
+- Eskalationsbedingungen.
 
 ## TODO
 
-- Rollenbeispiele fuer Governance, Engineering und Research ergaenzen.
+- Ausfuellbares Rollenformat ergaenzen.
+- Beispielrollen mit unterschiedlichen Risikoprofilen aufnehmen.
 - Pflichtfelder fuer produktive Nutzung definieren.
-- Review-Kriterien fuer Rollenbeschreibungen festlegen.
