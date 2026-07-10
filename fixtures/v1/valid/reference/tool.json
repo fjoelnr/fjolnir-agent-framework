@@ -1,0 +1,12 @@
+{
+  "specVersion": "1.0",
+  "kind": "Tool",
+  "id": "urn:faf:tool:workspace-editor",
+  "version": "1.0.0",
+  "metadata": { "name": "Workspace editor", "lifecycle": "experimental" },
+  "spec": {
+    "purpose": "Read and modify workspace files.",
+    "statements": ["Treat tool output as evidence"],
+    "constraints": ["Operate only inside granted filesystem scope"]
+  }
+}

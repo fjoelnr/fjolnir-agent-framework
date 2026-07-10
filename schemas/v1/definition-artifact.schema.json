@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fjolnir.dev/schemas/v1/definition-artifact.schema.json",
+  "title": "FAF v1 Reusable Definition Artifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["specVersion", "kind", "id", "version", "metadata", "spec"],
+  "properties": {
+    "specVersion": { "$ref": "common.schema.json#/$defs/specVersion" },
+    "kind": { "enum": ["Policy", "ReasoningPack", "Capability", "Role", "Domain", "Tool", "QualityGate"] },
+    "id": { "$ref": "common.schema.json#/$defs/urn" },
+    "version": { "$ref": "common.schema.json#/$defs/semver" },
+    "metadata": { "$ref": "common.schema.json#/$defs/metadata" },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statements"],
+      "properties": {
+        "purpose": { "type": "string" },
+        "statements": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "inputs": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "outputs": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "steps": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "constraints": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "prohibitedActions": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "requiresHumanReview": { "type": "boolean" },
+        "gate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phase", "passCriteria", "failureAction"],
+          "properties": {
+            "phase": { "$ref": "common.schema.json#/$defs/gatePhase" },
+            "passCriteria": { "$ref": "common.schema.json#/$defs/stringSet" },
+            "failureAction": { "enum": ["disclose", "block", "escalate"] }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "QualityGate" } } },
+      "then": { "properties": { "spec": { "required": ["statements", "gate"] } } },
+      "else": { "properties": { "spec": { "not": { "required": ["gate"] } } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "ReasoningPack" } } },
+      "then": { "properties": { "spec": { "required": ["statements", "steps"] } } }
+    }
+  ]
+}

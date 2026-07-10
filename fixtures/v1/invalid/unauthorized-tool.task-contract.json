@@ -1,0 +1,21 @@
+{
+  "specVersion": "1.0",
+  "kind": "TaskContract",
+  "id": "urn:faf:contract:task:unauthorized-tool",
+  "version": "1.0.0",
+  "metadata": { "name": "Unauthorized tool example", "lifecycle": "draft" },
+  "spec": {
+    "agentContract": { "id": "urn:faf:contract:agent:reference-engineer", "version": "1.0.0" },
+    "taskType": "documentation-change",
+    "objective": "Demonstrate semantic authority rejection.",
+    "inputs": [],
+    "constraints": [],
+    "acceptanceCriteria": ["Validator rejects unauthorized tool"],
+    "riskLevel": "low",
+    "requestedCapabilities": [],
+    "requestedTools": [{ "id": "urn:faf:tool:production-deployer", "version": "1.0.0" }],
+    "requiredOutput": "markdown-report",
+    "qualityGates": [],
+    "escalationConditions": []
+  }
+}

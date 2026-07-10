@@ -1,0 +1,12 @@
+{
+  "specVersion": "1.0",
+  "kind": "Domain",
+  "id": "urn:faf:domain:software-engineering",
+  "version": "1.0.0",
+  "metadata": { "name": "Software Engineering", "lifecycle": "experimental" },
+  "spec": {
+    "purpose": "Apply repository engineering constraints.",
+    "statements": ["Preserve unrelated user changes", "Validate changes proportionally to risk"],
+    "constraints": ["Stay within the assigned repository scope"]
+  }
+}

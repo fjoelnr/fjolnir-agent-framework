@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fjolnir.dev/schemas/v1/agent-genome.schema.json",
+  "title": "FAF v1 Agent Genome",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["specVersion", "kind", "id", "version", "metadata", "spec"],
+  "properties": {
+    "specVersion": { "$ref": "common.schema.json#/$defs/specVersion" },
+    "kind": { "const": "AgentGenome" },
+    "id": { "$ref": "common.schema.json#/$defs/urn" },
+    "version": { "$ref": "common.schema.json#/$defs/semver" },
+    "metadata": { "$ref": "common.schema.json#/$defs/metadata" },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["constitution", "agentContract", "role", "policies", "domains", "reasoningPacks", "capabilities", "tools", "qualityGates", "supportedTaskTypes"],
+      "properties": {
+        "constitution": { "$ref": "common.schema.json#/$defs/artifactRef" },
+        "agentContract": { "$ref": "common.schema.json#/$defs/artifactRef" },
+        "role": { "$ref": "common.schema.json#/$defs/artifactRef" },
+        "policies": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "domains": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "reasoningPacks": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "capabilities": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "tools": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "qualityGates": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "supportedTaskTypes": { "$ref": "common.schema.json#/$defs/stringSet" }
+      }
+    }
+  }
+}

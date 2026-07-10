@@ -1,0 +1,11 @@
+{
+  "specVersion": "1.0",
+  "kind": "Constitution",
+  "id": "urn:faf:constitution:core",
+  "version": "0.1.0",
+  "metadata": { "name": "Fjölnir Constitution", "lifecycle": "draft" },
+  "spec": {
+    "source": "docs/FJOLNIR_CONSTITUTION.md",
+    "principles": ["Truth before agreement", "Bounded autonomy", "Human accountability"]
+  }
+}

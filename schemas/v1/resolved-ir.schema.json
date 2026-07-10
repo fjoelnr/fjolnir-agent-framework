@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fjolnir.dev/schemas/v1/resolved-ir.schema.json",
+  "title": "FAF v1 Resolved Intermediate Representation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["irVersion", "kind", "buildId", "sources", "agent", "task", "behavior", "authority", "qualityGates", "provenance"],
+  "properties": {
+    "irVersion": { "const": "1.0" },
+    "kind": { "const": "ResolvedAgentTask" },
+    "buildId": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+    "sources": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+    "agent": {
+      "type": "object", "additionalProperties": false,
+      "required": ["genome", "contract", "role", "domains", "lifecycle"],
+      "properties": {
+        "genome": { "$ref": "common.schema.json#/$defs/artifactRef" },
+        "contract": { "$ref": "common.schema.json#/$defs/artifactRef" },
+        "role": { "$ref": "common.schema.json#/$defs/artifactRef" },
+        "domains": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "lifecycle": { "$ref": "common.schema.json#/$defs/lifecycle" }
+      }
+    },
+    "task": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contract", "taskType", "objective", "inputs", "constraints", "acceptanceCriteria", "riskLevel", "requiredOutput", "escalationConditions"],
+      "properties": {
+        "contract": { "$ref": "common.schema.json#/$defs/artifactRef" },
+        "taskType": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "objective": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "inputs": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "constraints": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "acceptanceCriteria": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "riskLevel": { "$ref": "common.schema.json#/$defs/riskLevel" },
+        "requiredOutput": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "escalationConditions": { "$ref": "common.schema.json#/$defs/stringSet" }
+      }
+    },
+    "behavior": {
+      "type": "object", "additionalProperties": false,
+      "required": ["policies", "reasoning", "instructions"],
+      "properties": {
+        "policies": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "reasoning": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "instructions": { "$ref": "common.schema.json#/$defs/stringSet" }
+      }
+    },
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["capabilities", "tools", "prohibitedActions", "reviewRequirements"],
+      "properties": {
+        "capabilities": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "tools": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "prohibitedActions": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "reviewRequirements": { "$ref": "common.schema.json#/$defs/stringSet" }
+      }
+    },
+    "qualityGates": {
+      "type": "array", "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["source", "phase", "passCriteria", "failureAction"],
+        "properties": {
+          "source": { "$ref": "common.schema.json#/$defs/artifactRef" },
+          "phase": { "$ref": "common.schema.json#/$defs/gatePhase" },
+          "passCriteria": { "$ref": "common.schema.json#/$defs/stringSet" },
+          "failureAction": { "enum": ["disclose", "block", "escalate"] }
+        }
+      }
+    },
+    "provenance": {
+      "type": "array", "minItems": 1, "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["target", "sources"],
+        "properties": {
+          "target": { "type": "string", "pattern": "^/" },
+          "sources": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "unauthorized-tool.task-contract.json": {
+    "schemaValid": true,
+    "semanticErrors": ["FAF-AUTH-TOOL-NOT-ALLOWED"]
+  }
+}

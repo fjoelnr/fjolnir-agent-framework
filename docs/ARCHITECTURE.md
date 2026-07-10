@@ -8,6 +8,8 @@ FAF is a layered architecture for specifying, composing, reviewing, and operatin
 
 The architecture provides a reference model for how agent behavior, policies, capabilities, domains, tools, contracts, execution rules, and quality gates relate to each other.
 
+This document and accepted Architecture Decision Records define the current architecture baseline. The Constitution remains the higher-precedence normative artifact.
+
 ## 2. Design Goals
 
 The architecture is designed to support:
@@ -74,6 +76,8 @@ Domains define subject-matter constraints and review expectations. A domain may 
 
 Domain rules MAY add stricter terminology, evidence requirements, review criteria, and escalation conditions.
 
+Domain is the canonical architectural term. Existing Operating Modes are Domain Profiles: selectable domain-specific packages that may combine terminology, reasoning guidance, review criteria, escalation triggers, output formats, and quality gates. They are not a separate authority layer.
+
 ### Tools
 
 Tools define external capabilities available to an agent at execution time. A tool may read files, query a repository, run tests, create documents, inspect web sources, or interact with an external system.
@@ -97,6 +101,8 @@ Task Contracts MUST remain within the authority granted by the Agent Contract.
 Quality Gates define checks that must be considered before an output is accepted or forwarded. They may include evidence separation, logical consistency, scope compliance, assumption visibility, risk visibility, output completeness, or required human review.
 
 Quality Gates may be manual, checklist-based, tool-assisted, or automated.
+
+A Quality Gate definition is a versioned rule selected by an Agent Genome or Task Contract. A Quality Gate result is runtime or validation evidence recording applicability, status, findings, and required follow-up. Definitions and results MUST remain distinguishable.
 
 ### Execution
 
@@ -131,11 +137,13 @@ A genome may include:
 
 The Agent Genome is the complete specification required to understand, review, reproduce, or evolve an agent.
 
+Agent Genome is the canonical term for the complete composition. Capability Profile is a deprecated compatibility term for earlier or incomplete genome-shaped compositions and SHOULD NOT be used in new architecture artifacts.
+
 Agent Genomes are preferable to monolithic prompts because they separate stable rules from variable task instructions. A monolithic prompt tends to mix constitution, policy, role, tool usage, task context, output format, and review criteria into a single artifact. That makes review, reuse, versioning, and controlled change difficult.
 
 By contrast, a genome allows teams to update a role, add a quality gate, change a tool permission, or revise a task contract without rewriting the entire agent definition.
 
-## 6. Layer Dependencies
+## 6. Layer Dependencies, Precedence, and Build Model
 
 Layer dependencies define which elements may refer to or depend on other elements.
 
@@ -163,6 +171,33 @@ Execution depends on all selected layers. It must not introduce hidden authority
 
 Feedback may affect any evolvable layer, subject to governance rules.
 
+These dependencies form a graph, not a strict top-to-bottom execution sequence. Roles, Domains, Reasoning Packs, Capabilities, Tools, and Quality Gates are reusable definitions selected and constrained by contracts.
+
+Normative precedence is:
+
+1. Constitution.
+2. Global Policies.
+3. Agent Contract.
+4. Task Contract.
+
+A lower-precedence artifact MAY narrow behavior but MUST NOT weaken a higher-precedence requirement or grant authority that a higher layer prohibits or does not grant. A material unresolved conflict is a validation error.
+
+The canonical build model is:
+
+```text
+Versioned source artifacts
+        ↓ resolve and validate
+Resolved Agent Genome + Task Contract
+        ↓ normalize
+Intermediate Representation (IR)
+        ↓ compile for target runtime
+Runtime representation
+        ↓ execute and evaluate
+Execution record + Quality Gate results + Feedback
+```
+
+The IR and runtime representation are derived artifacts. They MUST preserve provenance to their source versions and MUST NOT introduce authority absent from the resolved contracts.
+
 ## 7. Extensibility
 
 FAF is designed for extension without modifying the Constitution.
@@ -182,6 +217,8 @@ Extensions MUST remain compatible with the Constitution. If an extension require
 FAF architecture artifacts should be versioned. Versioning may apply to the Constitution, policies, roles, domains, reasoning packs, agent contracts, task contract templates, and quality gates.
 
 Material architectural decisions SHOULD be recorded in Architecture Decision Records (ADRs) or an equivalent decision record format.
+
+Accepted ADRs define the architecture baseline alongside this document. New decisions follow the process in `docs/adr/README.md`. If an ADR and this document diverge, the newer accepted decision governs until the architecture document is reconciled; neither may override the Constitution.
 
 Backward compatibility should be evaluated when changes affect existing Agent Genomes, Agent Contracts, Task Contracts, output formats, tool permissions, or quality gates.
 

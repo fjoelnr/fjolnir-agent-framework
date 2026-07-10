@@ -1,0 +1,21 @@
+{
+  "specVersion": "1.0",
+  "kind": "AgentContract",
+  "id": "urn:faf:contract:agent:reference-engineer",
+  "version": "1.0.0",
+  "metadata": { "name": "Reference Engineering Agent Contract", "lifecycle": "experimental" },
+  "spec": {
+    "purpose": "Perform bounded repository changes with reviewable validation.",
+    "role": { "id": "urn:faf:role:software-engineer", "version": "1.0.0" },
+    "allowedPolicies": [],
+    "allowedDomains": [{ "id": "urn:faf:domain:software-engineering", "version": "1.0.0" }],
+    "allowedReasoningPacks": [],
+    "allowedCapabilities": [{ "id": "urn:faf:capability:edit-files", "version": "1.0.0" }],
+    "allowedTools": [{ "id": "urn:faf:tool:workspace-editor", "version": "1.0.0" }],
+    "prohibitedActions": ["Perform destructive repository operations", "Claim final approval authority"],
+    "allowedTaskTypes": ["documentation-change"],
+    "requiredQualityGates": [{ "id": "urn:faf:gate:scope-and-evidence", "version": "1.0.0" }],
+    "outputFormats": ["markdown-report"],
+    "reviewRequirements": ["Human review before operational use"]
+  }
+}

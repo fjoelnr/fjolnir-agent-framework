@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fjolnir.dev/schemas/v1/constitution.schema.json",
+  "title": "FAF v1 Constitution Reference Artifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["specVersion", "kind", "id", "version", "metadata", "spec"],
+  "properties": {
+    "specVersion": { "$ref": "common.schema.json#/$defs/specVersion" },
+    "kind": { "const": "Constitution" },
+    "id": { "$ref": "common.schema.json#/$defs/urn" },
+    "version": { "$ref": "common.schema.json#/$defs/semver" },
+    "metadata": { "$ref": "common.schema.json#/$defs/metadata" },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "principles"],
+      "properties": {
+        "source": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "principles": { "$ref": "common.schema.json#/$defs/stringSet" }
+      }
+    }
+  }
+}

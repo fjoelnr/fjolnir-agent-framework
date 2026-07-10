@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fjolnir.dev/schemas/v1/common.schema.json",
+  "title": "FAF v1 Common Types",
+  "$defs": {
+    "specVersion": { "const": "1.0" },
+    "urn": { "type": "string", "pattern": "^urn:faf:[a-z0-9][a-z0-9._:-]*$" },
+    "semver": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$" },
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "stringSet": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" }, "uniqueItems": true },
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "$ref": "#/$defs/urn" },
+        "version": { "$ref": "#/$defs/semver" }
+      }
+    },
+    "lifecycle": { "enum": ["draft", "experimental", "validated", "operational", "deprecated", "retired"] },
+    "riskLevel": { "enum": ["low", "moderate", "high", "critical"] },
+    "gatePhase": { "enum": ["resolution", "pre-execution", "post-execution", "human-review"] },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "lifecycle"],
+      "properties": {
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "type": "string" },
+        "lifecycle": { "$ref": "#/$defs/lifecycle" },
+        "owners": { "$ref": "#/$defs/stringSet" },
+        "labels": { "$ref": "#/$defs/stringSet" }
+      }
+    }
+  }
+}

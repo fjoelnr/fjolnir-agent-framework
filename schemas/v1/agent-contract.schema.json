@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fjolnir.dev/schemas/v1/agent-contract.schema.json",
+  "title": "FAF v1 Agent Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["specVersion", "kind", "id", "version", "metadata", "spec"],
+  "properties": {
+    "specVersion": { "$ref": "common.schema.json#/$defs/specVersion" },
+    "kind": { "const": "AgentContract" },
+    "id": { "$ref": "common.schema.json#/$defs/urn" },
+    "version": { "$ref": "common.schema.json#/$defs/semver" },
+    "metadata": { "$ref": "common.schema.json#/$defs/metadata" },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["purpose", "role", "allowedDomains", "allowedCapabilities", "allowedTools", "prohibitedActions", "allowedTaskTypes", "requiredQualityGates", "outputFormats", "reviewRequirements"],
+      "properties": {
+        "purpose": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "role": { "$ref": "common.schema.json#/$defs/artifactRef" },
+        "allowedPolicies": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "allowedDomains": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "allowedReasoningPacks": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "allowedCapabilities": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "allowedTools": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "prohibitedActions": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "allowedTaskTypes": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "requiredQualityGates": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "outputFormats": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "reviewRequirements": { "$ref": "common.schema.json#/$defs/stringSet" }
+      }
+    }
+  }
+}

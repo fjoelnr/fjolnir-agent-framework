@@ -1,0 +1,16 @@
+{
+  "specVersion": "1.0",
+  "kind": "QualityGate",
+  "id": "urn:faf:gate:scope-and-evidence",
+  "version": "1.0.0",
+  "metadata": { "name": "Scope and evidence gate", "lifecycle": "experimental" },
+  "spec": {
+    "purpose": "Check scope compliance and validation evidence.",
+    "statements": ["Evaluate before delivering substantive output"],
+    "gate": {
+      "phase": "post-execution",
+      "passCriteria": ["Changes remain in scope", "Validation results are reported"],
+      "failureAction": "block"
+    }
+  }
+}

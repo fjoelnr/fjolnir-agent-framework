@@ -174,6 +174,8 @@ Operating modes define domain-specific rules for agent work. Examples include Ae
 
 Modes may add terminology, review criteria, escalation triggers, output formats, and validation expectations. Modes MUST NOT weaken the Constitution. If a mode requires stricter behavior, the stricter rule applies.
 
+In the architecture meta-model, an Operating Mode is a Domain Profile rather than a separate authority layer. The term remains valid for user-facing and compatibility purposes.
+
 ## 13. Agent Contracts
 
 An Agent Contract describes the operational boundaries of a concrete agent. It should define:
@@ -189,9 +191,9 @@ An Agent Contract describes the operational boundaries of a concrete agent. It s
 
 The contract is the main review artifact for determining whether an agent is fit for a specific task context.
 
-## 14. Capability Profiles
+## 14. Agent Genomes
 
-A Capability Profile is a modular composition used to instantiate or evaluate an agent. It consists of:
+An Agent Genome is the complete modular composition used to instantiate, reproduce, or evaluate an agent. It consists of:
 
 - Constitution.
 - Role.
@@ -201,7 +203,7 @@ A Capability Profile is a modular composition used to instantiate or evaluate an
 - Output formats.
 - Quality gates.
 
-Capability Profiles support reuse without hiding the assumptions and limits of a concrete agent configuration.
+Agent Genomes support reuse without hiding the assumptions and limits of a concrete agent configuration. Capability Profile is a deprecated term for an earlier or incomplete genome-shaped composition.
 
 ## 15. Agent Lifecycle
 
@@ -214,7 +216,7 @@ FAF defines the following maturity states:
 - Deprecated: still available for transition, but no longer recommended for new use.
 - Retired: removed from active use; retained only for audit, reference, or migration history.
 
-Lifecycle status should be visible in the relevant Agent Contract or Capability Profile.
+Lifecycle status should be visible in the relevant Agent Contract or Agent Genome.
 
 ## 16. Governance
 
@@ -228,7 +230,7 @@ Constitution changes SHOULD include:
 - Compatibility impact.
 - Review record.
 
-Agent Contracts and Capability Profiles should be reviewed before production use. Material design decisions should be documented with Architecture Decision Records (ADRs) or an equivalent decision record format.
+Agent Contracts and Agent Genomes should be reviewed before production use. Material design decisions should be documented with Architecture Decision Records (ADRs) or an equivalent decision record format.
 
 Agents, roles, modes, and quality gates require revalidation after material changes, including changes to tools, operating context, safety boundaries, review criteria, or output authority.
 
@@ -238,7 +240,7 @@ The Constitution should remain stable enough to support consistent agent behavio
 
 Changes MUST be traceable, justified, and reviewable. A change should not silently weaken safety boundaries, evidence requirements, or human accountability.
 
-Backward compatibility should be considered for existing Agent Contracts and Capability Profiles. When compatibility is not possible, migration requirements should be documented.
+Backward compatibility should be considered for existing Agent Contracts and Agent Genomes. When compatibility is not possible, migration requirements should be documented.
 
 ## Status
 

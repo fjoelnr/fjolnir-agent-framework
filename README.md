@@ -19,14 +19,16 @@ The long-term vision is a reusable constitution framework for agents used in tec
 
 ## Architecture
 
-FAF is organized into four practical layers:
+The current repository exposes four practical groups:
 
 - Constitution: baseline behavioral rules for all agents.
-- Modes: domain-specific operating rules for contexts such as aerospace, AI assurance, software engineering, and research.
+- Domain Profiles (currently named Modes): domain-specific operating rules for contexts such as aerospace, AI assurance, software engineering, and research.
 - Templates: reusable structures for system prompts, roles, task briefings, and reviews.
 - Checks: lightweight review artifacts for prompt quality and consistency.
 
-The repository mirrors this architecture:
+These groups are the current documentation surface, not the complete architectural meta-model. The normative model also defines policies, reasoning packs, capabilities, roles, tools, Agent and Task Contracts, Agent Genomes, execution, quality gates, and feedback. See `docs/ARCHITECTURE.md` and accepted records under `docs/adr/`.
+
+The repository currently mirrors the practical groups:
 
 ```text
 docs/       Constitution, operating modes, writing rules, decision logic, and prompt patterns
@@ -64,6 +66,12 @@ tests/      Checklist-based quality and consistency reviews
 - Provide first templates and examples.
 - Add basic quality and consistency checklists.
 
+### Phase 1.5: Architecture Baseline
+
+- Freeze the core vocabulary, dependencies, and precedence rules.
+- Record material architecture decisions through ADRs.
+- Align foundation documents with the Agent Genome model.
+
 ### Phase 2: Reviewability
 
 - Add criteria for severity, confidence, and escalation.
@@ -78,4 +86,4 @@ tests/      Checklist-based quality and consistency reviews
 
 ## Status
 
-Initial repository structure. The framework is not yet a complete assurance method or compliance standard. It is a starting point for building reviewable, modular, and governed agent configurations.
+Meta Model stage. The core conceptual architecture, machine-readable Agent Genome and contract schemas, and resolved IR format are baselined. A resolver, semantic validator, runtime compiler, and automated runtime validation remain future work. The framework is not yet a complete assurance method or compliance standard.

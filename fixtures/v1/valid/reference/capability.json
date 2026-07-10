@@ -1,0 +1,12 @@
+{
+  "specVersion": "1.0",
+  "kind": "Capability",
+  "id": "urn:faf:capability:edit-files",
+  "version": "1.0.0",
+  "metadata": { "name": "Edit repository files", "lifecycle": "experimental" },
+  "spec": {
+    "purpose": "Permit scoped file modification.",
+    "statements": ["Edit files inside the assigned repository and task scope"],
+    "constraints": ["Do not overwrite unrelated changes"]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fjolnir.dev/schemas/v1/task-contract.schema.json",
+  "title": "FAF v1 Task Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["specVersion", "kind", "id", "version", "metadata", "spec"],
+  "properties": {
+    "specVersion": { "$ref": "common.schema.json#/$defs/specVersion" },
+    "kind": { "const": "TaskContract" },
+    "id": { "$ref": "common.schema.json#/$defs/urn" },
+    "version": { "$ref": "common.schema.json#/$defs/semver" },
+    "metadata": { "$ref": "common.schema.json#/$defs/metadata" },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agentContract", "taskType", "objective", "inputs", "constraints", "acceptanceCriteria", "riskLevel", "requestedCapabilities", "requestedTools", "requiredOutput", "qualityGates", "escalationConditions"],
+      "properties": {
+        "agentContract": { "$ref": "common.schema.json#/$defs/artifactRef" },
+        "taskType": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "objective": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "context": { "type": "string" },
+        "inputs": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "constraints": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "acceptanceCriteria": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "riskLevel": { "$ref": "common.schema.json#/$defs/riskLevel" },
+        "requestedCapabilities": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "requestedTools": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "requiredOutput": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+        "qualityGates": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/artifactRef" }, "uniqueItems": true },
+        "escalationConditions": { "$ref": "common.schema.json#/$defs/stringSet" }
+      }
+    }
+  }
+}
