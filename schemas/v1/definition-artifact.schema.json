@@ -23,6 +23,25 @@
         "steps": { "$ref": "common.schema.json#/$defs/stringSet" },
         "constraints": { "$ref": "common.schema.json#/$defs/stringSet" },
         "prohibitedActions": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "effect", "subject", "value", "message"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z][a-z0-9.-]*$" },
+              "effect": { "enum": ["deny", "require-human-review"] },
+              "subject": { "enum": ["task-type", "risk-level", "capability", "tool"] },
+              "value": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+              "message": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+            },
+            "allOf": [{
+              "if": { "properties": { "subject": { "const": "risk-level" } } },
+              "then": { "properties": { "value": { "enum": ["low", "moderate", "high", "critical"] } } }
+            }]
+          }
+        },
         "requiresHumanReview": { "type": "boolean" },
         "gate": {
           "type": "object",
@@ -46,6 +65,11 @@
     {
       "if": { "properties": { "kind": { "const": "ReasoningPack" } } },
       "then": { "properties": { "spec": { "required": ["statements", "steps"] } } }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "Policy" } } },
+      "then": { "properties": { "spec": { "required": ["statements", "rules"] } } },
+      "else": { "properties": { "spec": { "not": { "required": ["rules"] } } } }
     }
   ]
 }

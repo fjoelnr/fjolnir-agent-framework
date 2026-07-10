@@ -48,6 +48,7 @@ runtime representation, and recording Quality Gate results. See
 `docs/REFERENCE_IMPLEMENTATION.md` for installation, commands, and boundaries.
 Conformance requirements and the negative-fixture matrix are documented in
 `docs/CONFORMANCE.md`.
+The bounded executable rule language is documented in `docs/POLICY_ENGINE.md`.
 
 ## Design Principles
 
@@ -98,4 +99,4 @@ Conformance requirements and the negative-fixture matrix are documented in
 
 ## Status
 
-Reference Implementation stage. The architecture baseline, machine-readable schemas, deterministic resolver, semantic validator, generic compiler backend, and Execution Record flow are implemented as an experimental vertical slice. Broader policy semantics, additional backends, operational validation, and governance workflows remain future work. The framework is not yet a complete assurance method or compliance standard.
+Reference Implementation stage. The architecture baseline, machine-readable schemas, deterministic resolver, semantic validator, bounded Policy Engine, generic compiler backend, and Execution Record flow are implemented as an experimental vertical slice. Additional backends, automated gate evaluators, operational validation, and governance workflows remain future work. The framework is not yet a complete assurance method or compliance standard.

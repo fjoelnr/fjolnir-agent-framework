@@ -1,6 +1,6 @@
 # Fjölnir Resolved Agent Task
 
-Build: `sha256:b2eb6ec333f4faa354170dc55c65b8ce3f9e17d770db61c25122375ad0f33ce5`
+Build: `sha256:83916b91fc85104673ab114a4bb5befd542cfd2dab3f198ada91c7dcf20b97ea`
 
 ## Objective
 
@@ -18,6 +18,11 @@ markdown-report
 - Validate changes proportionally to risk
 
 ## Policies
+
+- Moderate or higher risk requires human review
+- Production deployment is denied
+
+## Matched policy decisions
 
 - None
 

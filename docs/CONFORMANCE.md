@@ -15,6 +15,7 @@ an assurance, compliance, safety, or production-readiness certification.
 | Exact identity | Resolve `(id, version)` and reject conflicting duplicates | Reference resolution and duplicate-identity fixture |
 | Kind safety | Reject an artifact used in the wrong selection slot | Wrong-kind Genome fixture |
 | Authority narrowing | Reject tools, capabilities, and task types outside the Agent Contract | Isolated negative Task Contracts |
+| Policy enforcement | Preserve every rule decision and reject a matched denial | Policy decision tests and policy-denied Genome fixture |
 | Required controls | Reject omission of required Quality Gates | Missing-gate Task Contract |
 | Determinism | Produce identical IR and build identifiers from identical inputs | Repeated resolver test and golden IR |
 | Compiler boundary | Preserve prohibitions and build identity in runtime output | Generic-backend golden test |

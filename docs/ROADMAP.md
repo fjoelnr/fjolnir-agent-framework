@@ -2,9 +2,9 @@
 
 ## Status
 
-FAF is transitioning from the Foundation stage to the Meta Model stage. ADR
-0001 freezes the core conceptual vocabulary and dependency model. No
-machine-readable genome format, IR, compiler, or runtime validator exists yet.
+FAF has completed its Foundation, Meta Model, Reference Architecture,
+Conformance, and first Policy Engine milestones. It remains experimental and is
+not yet an operational assurance or governance system.
 
 ## Milestone 1: Architecture baseline
 
@@ -62,9 +62,22 @@ Status: Complete
 Exit criterion: the reference implementation, packaged CLI, schemas, fixtures,
 and documentation are checked reproducibly by local tests and CI.
 
+## Milestone 5: Explainable Policy Engine
+
+Status: Complete
+
+- Define a bounded, declarative v1 policy rule language.
+- Ensure policies narrow authority but never grant it.
+- Preserve matched and unmatched decisions with rule provenance.
+- Enforce denial and human-review effects during resolution.
+- Add policy-specific positive and negative conformance fixtures.
+
+Exit criterion: policy evaluation is deterministic, explainable in the IR, and
+cannot expand Agent Contract or Task Contract authority.
+
 ## Later milestones
 
+- Automated and pluggable Quality Gate evaluators.
 - Additional compiler backends.
-- Policy engine and automated quality gates.
 - Agent Builder authoring workflow.
 - Operational validation, monitoring, feedback, and revalidation workflows.

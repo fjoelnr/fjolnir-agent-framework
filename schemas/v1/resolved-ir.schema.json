@@ -42,7 +42,24 @@
       "properties": {
         "policies": { "$ref": "common.schema.json#/$defs/stringSet" },
         "reasoning": { "$ref": "common.schema.json#/$defs/stringSet" },
-        "instructions": { "$ref": "common.schema.json#/$defs/stringSet" }
+        "instructions": { "$ref": "common.schema.json#/$defs/stringSet" },
+        "policyDecisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source", "ruleId", "effect", "subject", "value", "matched", "message"],
+            "properties": {
+              "source": { "$ref": "common.schema.json#/$defs/artifactRef" },
+              "ruleId": { "type": "string", "minLength": 1 },
+              "effect": { "enum": ["deny", "require-human-review"] },
+              "subject": { "enum": ["task-type", "risk-level", "capability", "tool"] },
+              "value": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+              "matched": { "type": "boolean" },
+              "message": { "$ref": "common.schema.json#/$defs/nonEmptyString" }
+            }
+          }
+        }
       }
     },
     "authority": {

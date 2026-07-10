@@ -1,0 +1,27 @@
+{
+  "specVersion": "1.0",
+  "kind": "Policy",
+  "id": "urn:faf:policy:reference-operations",
+  "version": "1.0.0",
+  "metadata": { "name": "Reference operations policy", "lifecycle": "experimental" },
+  "spec": {
+    "purpose": "Demonstrate executable policy decisions.",
+    "statements": ["Production deployment is denied", "Moderate or higher risk requires human review"],
+    "rules": [
+      {
+        "id": "deny-production-task",
+        "effect": "deny",
+        "subject": "task-type",
+        "value": "production-deployment",
+        "message": "Production deployment is outside this reference policy."
+      },
+      {
+        "id": "review-moderate-risk",
+        "effect": "require-human-review",
+        "subject": "risk-level",
+        "value": "moderate",
+        "message": "Moderate or higher risk requires human review."
+      }
+    ]
+  }
+}

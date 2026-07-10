@@ -1,0 +1,18 @@
+{
+  "specVersion": "1.0",
+  "kind": "Policy",
+  "id": "urn:faf:policy:deny-documentation",
+  "version": "1.0.0",
+  "metadata": { "name": "Deny documentation policy", "lifecycle": "experimental" },
+  "spec": {
+    "purpose": "Provide an isolated Policy Engine denial fixture.",
+    "statements": ["Documentation changes are denied when this policy is selected"],
+    "rules": [{
+      "id": "deny-documentation-change",
+      "effect": "deny",
+      "subject": "task-type",
+      "value": "documentation-change",
+      "message": "Documentation changes are disabled by the selected policy."
+    }]
+  }
+}

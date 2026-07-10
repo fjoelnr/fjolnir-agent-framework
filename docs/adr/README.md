@@ -56,3 +56,4 @@ Use [0000-template.md](0000-template.md) for new records.
 | [0002](0002-use-json-schema-and-a-resolved-ir.md) | Use JSON Schema source artifacts and a resolved IR | Accepted |
 | [0003](0003-reference-implementation-and-build-identity.md) | Reference implementation and build identity | Accepted |
 | [0004](0004-conformance-is-versioned-evidence-not-certification.md) | Conformance is versioned evidence, not certification | Accepted |
+| [0005](0005-policies-only-narrow-authority.md) | Policies only narrow authority | Accepted |

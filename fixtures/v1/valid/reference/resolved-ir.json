@@ -1,7 +1,7 @@
 {
   "irVersion": "1.0",
   "kind": "ResolvedAgentTask",
-  "buildId": "sha256:b2eb6ec333f4faa354170dc55c65b8ce3f9e17d770db61c25122375ad0f33ce5",
+  "buildId": "sha256:83916b91fc85104673ab114a4bb5befd542cfd2dab3f198ada91c7dcf20b97ea",
   "sources": [
     {
       "id": "urn:faf:capability:edit-files",
@@ -29,6 +29,10 @@
     },
     {
       "id": "urn:faf:genome:reference-engineer",
+      "version": "1.0.0"
+    },
+    {
+      "id": "urn:faf:policy:reference-operations",
       "version": "1.0.0"
     },
     {
@@ -85,13 +89,42 @@
     ]
   },
   "behavior": {
-    "policies": [],
+    "policies": [
+      "Moderate or higher risk requires human review",
+      "Production deployment is denied"
+    ],
     "reasoning": [],
     "instructions": [
       "Inspect relevant context before changing files",
       "Report validation evidence",
       "Preserve unrelated user changes",
       "Validate changes proportionally to risk"
+    ],
+    "policyDecisions": [
+      {
+        "source": {
+          "id": "urn:faf:policy:reference-operations",
+          "version": "1.0.0"
+        },
+        "ruleId": "deny-production-task",
+        "effect": "deny",
+        "subject": "task-type",
+        "value": "production-deployment",
+        "matched": false,
+        "message": "Production deployment is outside this reference policy."
+      },
+      {
+        "source": {
+          "id": "urn:faf:policy:reference-operations",
+          "version": "1.0.0"
+        },
+        "ruleId": "review-moderate-risk",
+        "effect": "require-human-review",
+        "subject": "risk-level",
+        "value": "moderate",
+        "matched": false,
+        "message": "Moderate or higher risk requires human review."
+      }
     ]
   },
   "authority": {
@@ -153,6 +186,15 @@
         },
         {
           "id": "urn:faf:role:software-engineer",
+          "version": "1.0.0"
+        }
+      ]
+    },
+    {
+      "target": "/behavior/policyDecisions",
+      "sources": [
+        {
+          "id": "urn:faf:policy:reference-operations",
           "version": "1.0.0"
         }
       ]

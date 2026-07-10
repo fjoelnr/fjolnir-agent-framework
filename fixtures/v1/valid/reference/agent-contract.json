@@ -7,7 +7,10 @@
   "spec": {
     "purpose": "Perform bounded repository changes with reviewable validation.",
     "role": { "id": "urn:faf:role:software-engineer", "version": "1.0.0" },
-    "allowedPolicies": [],
+    "allowedPolicies": [
+      { "id": "urn:faf:policy:reference-operations", "version": "1.0.0" },
+      { "id": "urn:faf:policy:deny-documentation", "version": "1.0.0" }
+    ],
     "allowedDomains": [{ "id": "urn:faf:domain:software-engineering", "version": "1.0.0" }],
     "allowedReasoningPacks": [],
     "allowedCapabilities": [{ "id": "urn:faf:capability:edit-files", "version": "1.0.0" }],

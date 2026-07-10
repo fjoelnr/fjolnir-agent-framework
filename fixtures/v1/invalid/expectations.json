@@ -23,6 +23,10 @@
     "schemaValid": true,
     "semanticErrors": ["FAF-KIND-MISMATCH"]
   },
+  "policy-denied.agent-genome.json": {
+    "schemaValid": true,
+    "semanticErrors": ["FAF-POLICY-DENIED"]
+  },
   "schema-unknown-property.task-contract.json": {
     "schemaValid": false,
     "semanticErrors": ["FAF-SCHEMA-INVALID"]

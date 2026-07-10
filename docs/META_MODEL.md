@@ -84,9 +84,14 @@ The following are semantic errors:
 - A referenced kind does not match its selection slot.
 - A required quality gate cannot be resolved or evaluated for its declared
   phase.
+- A selected executable Policy denies a task type, capability, or tool fact.
 
 Prohibitions take precedence over permissions. Lower layers may add
 prohibitions, constraints, gates, or review requirements.
+
+Executable Policy rules may deny explicit facts or require human review. They
+cannot grant authority. Every rule evaluation is retained as a Policy Decision
+in the IR with its source and match result; see ADR 0005.
 
 ## 6. Composition rules
 

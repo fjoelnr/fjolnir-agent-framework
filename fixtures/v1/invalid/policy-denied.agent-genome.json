@@ -1,14 +1,14 @@
 {
   "specVersion": "1.0",
   "kind": "AgentGenome",
-  "id": "urn:faf:genome:reference-engineer",
+  "id": "urn:faf:genome:policy-denied",
   "version": "1.0.0",
-  "metadata": { "name": "Reference Engineering Genome", "lifecycle": "experimental" },
+  "metadata": { "name": "Policy denied example", "lifecycle": "draft" },
   "spec": {
     "constitution": { "id": "urn:faf:constitution:core", "version": "0.1.0" },
     "agentContract": { "id": "urn:faf:contract:agent:reference-engineer", "version": "1.0.0" },
     "role": { "id": "urn:faf:role:software-engineer", "version": "1.0.0" },
-    "policies": [{ "id": "urn:faf:policy:reference-operations", "version": "1.0.0" }],
+    "policies": [{ "id": "urn:faf:policy:deny-documentation", "version": "1.0.0" }],
     "domains": [{ "id": "urn:faf:domain:software-engineering", "version": "1.0.0" }],
     "reasoningPacks": [],
     "capabilities": [{ "id": "urn:faf:capability:edit-files", "version": "1.0.0" }],

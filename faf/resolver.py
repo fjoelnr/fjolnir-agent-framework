@@ -6,6 +6,7 @@ from typing import Any, Iterable
 
 from .catalog import Artifact, Catalog, canonical_json, identity, ref, ref_identity
 from .errors import Finding, ValidationFailure
+from .policy import evaluate_policies
 from .schema import SchemaValidator
 
 KIND_BY_SELECTION = {
@@ -102,6 +103,30 @@ class Resolver:
 
         task_capabilities = [self.catalog.resolve_any(value, "/spec/requestedCapabilities") for value in task["spec"]["requestedCapabilities"]]
         task_tools = [self.catalog.resolve_any(value, "/spec/requestedTools") for value in task["spec"]["requestedTools"]]
+        policy_decisions = evaluate_policies(
+            selected["policies"],
+            task_type=task["spec"]["taskType"],
+            risk_level=task["spec"]["riskLevel"],
+            capabilities=task_capabilities,
+            tools=task_tools,
+        )
+        denied = [decision for decision in policy_decisions if decision.matched and decision.effect == "deny"]
+        if denied:
+            raise ValidationFailure([
+                Finding(
+                    "FAF-POLICY-DENIED",
+                    f"{decision.source['id']} rule {decision.rule_id}: {decision.message}",
+                    "/spec",
+                )
+                for decision in denied
+            ])
+        review_requirements = list(contract["spec"]["reviewRequirements"])
+        review_requirements.extend(
+            decision.message
+            for decision in policy_decisions
+            if decision.matched and decision.effect == "require-human-review"
+        )
+        review_requirements = list(dict.fromkeys(review_requirements))
         all_gate_refs = {ref_identity(value): value for value in contract["spec"]["requiredQualityGates"] + task["spec"]["qualityGates"]}
         gates = [self.catalog.resolve(value, "QualityGate", "/spec/qualityGates") for _, value in sorted(all_gate_refs.items())]
 
@@ -140,11 +165,12 @@ class Resolver:
             "behavior": {
                 "policies": sorted(set(policies)), "reasoning": reasoning,
                 "instructions": list(dict.fromkeys(instructions)),
+                "policyDecisions": [decision.as_dict() for decision in policy_decisions],
             },
             "authority": {
                 "capabilities": _sorted_refs(task_capabilities), "tools": _sorted_refs(task_tools),
                 "prohibitedActions": sorted(prohibited),
-                "reviewRequirements": contract["spec"]["reviewRequirements"],
+                "reviewRequirements": review_requirements,
             },
             "qualityGates": [{
                 "source": ref(gate), "phase": gate["spec"]["gate"]["phase"],
@@ -154,6 +180,7 @@ class Resolver:
             "provenance": [
                 {"target": "/authority", "sources": [ref(contract), ref(task)]},
                 {"target": "/behavior/instructions", "sources": _sorted_refs([role] + selected["domains"])},
+                {"target": "/behavior/policyDecisions", "sources": _sorted_refs(selected["policies"])},
             ],
         }
         semantic = dict(ir)

@@ -14,6 +14,7 @@ The implementation provides:
 - Deterministic resolved IR and portable SHA-256 build identity.
 - A generic Markdown runtime backend.
 - Post-execution gate evaluation and Execution Records.
+- Explainable Policy evaluation that can deny facts or require human review.
 
 ## Install
 

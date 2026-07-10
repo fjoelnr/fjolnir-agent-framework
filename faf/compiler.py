@@ -22,6 +22,12 @@ def compile_generic_text(ir: dict[str, Any]) -> str:
     ]
     lines += _section("Instructions", ir["behavior"]["instructions"])
     lines += _section("Policies", ir["behavior"]["policies"])
+    matched_policy_decisions = [
+        decision["message"]
+        for decision in ir["behavior"].get("policyDecisions", [])
+        if decision["matched"]
+    ]
+    lines += _section("Matched policy decisions", matched_policy_decisions)
     lines += _section("Reasoning procedure", ir["behavior"]["reasoning"])
     lines += _section("Constraints", ir["task"]["constraints"])
     lines += _section("Prohibited actions", ir["authority"]["prohibitedActions"])

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 import unittest
 from pathlib import Path
 
@@ -8,6 +9,7 @@ from faf.compiler import compile_generic_text
 from faf.catalog import Catalog
 from faf.errors import ValidationFailure
 from faf.execution import create_execution_record
+from faf.policy import evaluate_policies
 from faf.resolver import Resolver
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -46,6 +48,38 @@ class ReferenceImplementationTests(unittest.TestCase):
         with self.assertRaises(ValidationFailure) as raised:
             self.resolver.resolve(self.genome, bad_task)
         self.assertIn("FAF-AUTH-TOOL-NOT-ALLOWED", {item.code for item in raised.exception.findings})
+
+    def test_policy_decisions_are_preserved_in_ir(self) -> None:
+        ir = self.resolver.resolve(self.genome, self.task)
+        decisions = ir["behavior"]["policyDecisions"]
+        self.assertEqual(["deny-production-task", "review-moderate-risk"], [item["ruleId"] for item in decisions])
+        self.assertFalse(any(item["matched"] for item in decisions))
+
+    def test_policy_requires_review_at_moderate_risk(self) -> None:
+        policy = load(REFERENCE / "policy.json")
+        decisions = evaluate_policies(
+            [policy],
+            task_type="documentation-change",
+            risk_level="moderate",
+            capabilities=[],
+            tools=[],
+        )
+        matched = [item for item in decisions if item.matched]
+        self.assertEqual(["review-moderate-risk"], [item.rule_id for item in matched])
+        elevated_task = deepcopy(self.task)
+        elevated_task["spec"]["riskLevel"] = "moderate"
+        ir = self.resolver.resolve(self.genome, elevated_task)
+        self.assertIn("Moderate or higher risk requires human review.", ir["authority"]["reviewRequirements"])
+
+    def test_duplicate_policy_rule_id_is_rejected(self) -> None:
+        policy = load(REFERENCE / "policy.json")
+        policy["spec"]["rules"].append(dict(policy["spec"]["rules"][0]))
+        with self.assertRaises(ValidationFailure) as raised:
+            evaluate_policies(
+                [policy], task_type="documentation-change", risk_level="low",
+                capabilities=[], tools=[]
+            )
+        self.assertIn("FAF-POLICY-DUPLICATE-RULE", {item.code for item in raised.exception.findings})
 
     def test_execution_record_requires_human_review(self) -> None:
         ir = self.resolver.resolve(self.genome, self.task)
