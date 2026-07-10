@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 from .compiler import compile_generic_text
+from .backends import compile_openai_responses_request
 from .errors import ValidationFailure
 from .execution import create_execution_record
 from .resolver import Resolver
@@ -39,6 +40,10 @@ def build_parser() -> argparse.ArgumentParser:
     compile_cmd = sub.add_parser("compile")
     compile_cmd.add_argument("--ir", type=Path, required=True)
     compile_cmd.add_argument("--output", type=Path)
+    openai = sub.add_parser("compile-openai")
+    openai.add_argument("--ir", type=Path, required=True)
+    openai.add_argument("--model", required=True)
+    openai.add_argument("--output", type=Path)
     record = sub.add_parser("record")
     record.add_argument("--ir", type=Path, required=True)
     record.add_argument("--observations", type=Path, required=True)
@@ -59,6 +64,15 @@ def main(argv: list[str] | None = None) -> int:
             from .schema import SchemaValidator
             SchemaValidator(schema_dir).validate(result)
             rendered = compile_generic_text(result)
+        elif args.command == "compile-openai":
+            result = _load(args.ir)
+            from .schema import SchemaValidator
+            SchemaValidator(schema_dir).validate(result)
+            rendered = json.dumps(
+                compile_openai_responses_request(result, args.model),
+                ensure_ascii=False,
+                indent=2,
+            ) + "\n"
         else:
             from .schema import SchemaValidator
             validator = SchemaValidator(schema_dir)

@@ -77,7 +77,6 @@ cannot expand Agent Contract or Task Contract authority.
 
 ## Later milestones
 
-- Additional compiler backends.
 - Agent Builder authoring workflow.
 - Operational validation, monitoring, feedback, and revalidation workflows.
 
@@ -93,3 +92,16 @@ Status: In progress
 
 Exit criterion: an automated Gate is deterministic, traceable, bounded to its
 declared check, and cannot be interpreted as approval authority.
+
+## Milestone 7: Provider Runtime Backend
+
+Status: Complete
+
+- Establish pure backend rendering boundaries.
+- Render one concrete OpenAI Responses request from the resolved IR.
+- Require an explicit provider model identifier.
+- Keep FAF Tool references informational unless separately bound.
+- Add deterministic backend fixtures and tests.
+
+Exit criterion: a provider request is reproducible from the IR and cannot add
+provider tools, capabilities, or authority absent from FAF contracts.

@@ -16,6 +16,7 @@ The implementation provides:
 - Post-execution gate evaluation and Execution Records.
 - Explainable Policy evaluation that can deny facts or require human review.
 - Deterministic `evidence-set` Quality Gate evaluation.
+- A pure OpenAI Responses request renderer with no provider API execution.
 
 ## Install
 
@@ -43,6 +44,18 @@ faf resolve \
 ```text
 faf compile --ir resolved-ir.json --output runtime.md
 ```
+
+## Render an OpenAI Responses request
+
+```text
+faf compile-openai \
+  --ir resolved-ir.json \
+  --model "your-explicit-model-id" \
+  --output openai-request.json
+```
+
+This renders a request artifact only. It neither reads credentials nor invokes
+the OpenAI API.
 
 ## Create an Execution Record
 

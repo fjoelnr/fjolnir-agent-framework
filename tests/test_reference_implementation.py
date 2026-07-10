@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 from faf.compiler import compile_generic_text
+from faf.backends import compile_openai_responses_request
 from faf.catalog import Catalog
 from faf.errors import ValidationFailure
 from faf.execution import create_execution_record
@@ -42,6 +43,20 @@ class ReferenceImplementationTests(unittest.TestCase):
         self.assertEqual(first, compile_generic_text(ir))
         self.assertIn(ir["buildId"], first)
         self.assertIn("Perform destructive repository operations", first)
+
+    def test_openai_backend_is_deterministic_and_has_no_provider_tools(self) -> None:
+        ir = self.resolver.resolve(self.genome, self.task)
+        request = compile_openai_responses_request(ir, "test-model")
+        self.assertEqual(request, compile_openai_responses_request(ir, "test-model"))
+        self.assertEqual(request, load(REFERENCE / "openai-responses-request.json"))
+        self.assertNotIn("tools", request)
+        self.assertIn("workspace-editor", request["instructions"])
+        self.assertIn(ir["task"]["objective"], request["input"])
+
+    def test_openai_backend_requires_explicit_model(self) -> None:
+        ir = self.resolver.resolve(self.genome, self.task)
+        with self.assertRaises(ValueError):
+            compile_openai_responses_request(ir, "  ")
 
     def test_unauthorized_tool_is_rejected(self) -> None:
         bad_task = load(ROOT / "fixtures" / "v1" / "invalid" / "unauthorized-tool.task-contract.json")

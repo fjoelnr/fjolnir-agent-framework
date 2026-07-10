@@ -21,6 +21,7 @@ an assurance, compliance, safety, or production-readiness certification.
 | Compiler boundary | Preserve prohibitions and build identity in runtime output | Generic-backend golden test |
 | Execution accountability | Require one result per gate and preserve human review | Execution Record tests |
 | Automated gates | Verify configured evidence and apply failure disposition | Evidence-set gate tests |
+| Provider backend boundary | Render a deterministic request without provider tool declarations | OpenAI Responses backend fixture and tests |
 
 ## Fixture rules
 
