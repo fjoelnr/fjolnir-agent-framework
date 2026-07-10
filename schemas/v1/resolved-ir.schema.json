@@ -76,11 +76,20 @@
       "type": "array", "items": {
         "type": "object", "additionalProperties": false,
         "required": ["source", "phase", "passCriteria", "failureAction"],
-        "properties": {
-          "source": { "$ref": "common.schema.json#/$defs/artifactRef" },
-          "phase": { "$ref": "common.schema.json#/$defs/gatePhase" },
-          "passCriteria": { "$ref": "common.schema.json#/$defs/stringSet" },
-          "failureAction": { "enum": ["disclose", "block", "escalate"] }
+          "properties": {
+            "source": { "$ref": "common.schema.json#/$defs/artifactRef" },
+            "phase": { "$ref": "common.schema.json#/$defs/gatePhase" },
+            "passCriteria": { "$ref": "common.schema.json#/$defs/stringSet" },
+            "failureAction": { "enum": ["disclose", "block", "escalate"] },
+            "evaluator": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["kind", "requiredEvidence"],
+              "properties": {
+                "kind": { "const": "evidence-set" },
+                "requiredEvidence": { "$ref": "common.schema.json#/$defs/stringSet" }
+              }
+            }
         }
       }
     },

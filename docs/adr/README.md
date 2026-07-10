@@ -57,3 +57,4 @@ Use [0000-template.md](0000-template.md) for new records.
 | [0003](0003-reference-implementation-and-build-identity.md) | Reference implementation and build identity | Accepted |
 | [0004](0004-conformance-is-versioned-evidence-not-certification.md) | Conformance is versioned evidence, not certification | Accepted |
 | [0005](0005-policies-only-narrow-authority.md) | Policies only narrow authority | Accepted |
+| [0006](0006-automated-gates-verify-evidence-not-approval.md) | Automated gates verify evidence, not approval | Accepted |

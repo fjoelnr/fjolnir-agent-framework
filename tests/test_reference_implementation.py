@@ -95,6 +95,15 @@ class ReferenceImplementationTests(unittest.TestCase):
             create_execution_record(ir, {"outputSummary": "Missing result", "gateResults": []})
         self.assertIn("FAF-GATE-RESULT-MISSING", {item.code for item in raised.exception.findings})
 
+    def test_evidence_set_gate_overrides_unsubstantiated_pass(self) -> None:
+        ir = self.resolver.resolve(self.genome, self.task)
+        observations = load(REFERENCE / "execution-observations.json")
+        observations["gateResults"][0]["status"] = "passed"
+        observations["gateResults"][0]["evidence"] = ["Automated validation passed"]
+        record = create_execution_record(ir, observations)
+        self.assertEqual("failed", record["gateResults"][0]["status"])
+        self.assertEqual("blocked", record["status"])
+
     def test_duplicate_gate_result_is_rejected(self) -> None:
         ir = self.resolver.resolve(self.genome, self.task)
         observations = load(REFERENCE / "execution-observations.json")

@@ -1,6 +1,6 @@
 # Fjölnir Resolved Agent Task
 
-Build: `sha256:83916b91fc85104673ab114a4bb5befd542cfd2dab3f198ada91c7dcf20b97ea`
+Build: `sha256:8be51b3b56eac9da1d820c29630fd5f74e57de30ffbe06b0c1673064a5980c5d`
 
 ## Objective
 

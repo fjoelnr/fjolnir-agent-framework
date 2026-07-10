@@ -10,7 +10,11 @@
     "gate": {
       "phase": "post-execution",
       "passCriteria": ["Changes remain in scope", "Validation results are reported"],
-      "failureAction": "block"
+      "failureAction": "block",
+      "evaluator": {
+        "kind": "evidence-set",
+        "requiredEvidence": ["Changes remained in documentation scope", "Automated validation passed"]
+      }
     }
   }
 }

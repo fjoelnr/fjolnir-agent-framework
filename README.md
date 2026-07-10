@@ -49,6 +49,8 @@ runtime representation, and recording Quality Gate results. See
 Conformance requirements and the negative-fixture matrix are documented in
 `docs/CONFORMANCE.md`.
 The bounded executable rule language is documented in `docs/POLICY_ENGINE.md`.
+Quality-Gate semantics and automated evaluator boundaries are documented in
+`docs/QUALITY_GATES.md`.
 
 ## Design Principles
 

@@ -77,7 +77,19 @@ cannot expand Agent Contract or Task Contract authority.
 
 ## Later milestones
 
-- Automated and pluggable Quality Gate evaluators.
 - Additional compiler backends.
 - Agent Builder authoring workflow.
 - Operational validation, monitoring, feedback, and revalidation workflows.
+
+## Milestone 6: Deterministic Quality Gate Evaluation
+
+Status: In progress
+
+- Define a bounded automated evaluator model.
+- Preserve manual Gate behavior where no evaluator is declared.
+- Apply evaluator results before Execution Record disposition.
+- Prove automated evidence presence does not remove human review.
+- Add evaluator-specific conformance checks and documentation.
+
+Exit criterion: an automated Gate is deterministic, traceable, bounded to its
+declared check, and cannot be interpreted as approval authority.

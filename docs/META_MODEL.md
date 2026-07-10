@@ -132,6 +132,11 @@ Execution Records are derived after runtime work. Every configured gate needs
 exactly one result. A passed automated gate does not satisfy an independent
 human-review requirement; in that case the record remains `pending-review`.
 
+Quality Gate definitions may declare a deterministic evaluator. v1 supports the
+`evidence-set` evaluator, which checks only that configured evidence statements
+were supplied. It does not establish their truth or substitute for human
+approval; see ADR 0006 and `QUALITY_GATES.md`.
+
 ## 8. Determinism and canonicalization
 
 Given identical source artifacts and resolver configuration, resolution MUST

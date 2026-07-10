@@ -20,6 +20,7 @@ an assurance, compliance, safety, or production-readiness certification.
 | Determinism | Produce identical IR and build identifiers from identical inputs | Repeated resolver test and golden IR |
 | Compiler boundary | Preserve prohibitions and build identity in runtime output | Generic-backend golden test |
 | Execution accountability | Require one result per gate and preserve human review | Execution Record tests |
+| Automated gates | Verify configured evidence and apply failure disposition | Evidence-set gate tests |
 
 ## Fixture rules
 

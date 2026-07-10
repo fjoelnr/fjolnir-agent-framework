@@ -15,6 +15,7 @@ The implementation provides:
 - A generic Markdown runtime backend.
 - Post-execution gate evaluation and Execution Records.
 - Explainable Policy evaluation that can deny facts or require human review.
+- Deterministic `evidence-set` Quality Gate evaluation.
 
 ## Install
 

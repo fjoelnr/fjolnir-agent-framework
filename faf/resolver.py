@@ -176,6 +176,7 @@ class Resolver:
                 "source": ref(gate), "phase": gate["spec"]["gate"]["phase"],
                 "passCriteria": gate["spec"]["gate"]["passCriteria"],
                 "failureAction": gate["spec"]["gate"]["failureAction"],
+                **({"evaluator": gate["spec"]["gate"]["evaluator"]} if "evaluator" in gate["spec"]["gate"] else {}),
             } for gate in sorted(gates, key=identity)],
             "provenance": [
                 {"target": "/authority", "sources": [ref(contract), ref(task)]},

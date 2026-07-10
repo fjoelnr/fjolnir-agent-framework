@@ -4,9 +4,11 @@ from typing import Any
 
 from .catalog import ref_identity
 from .errors import Finding, ValidationFailure
+from .gates import evaluate_gate_results
 
 
 def create_execution_record(ir: dict[str, Any], observations: dict[str, Any]) -> dict[str, Any]:
+    observations = evaluate_gate_results(ir, observations)
     configured = {ref_identity(gate["source"]): gate for gate in ir["qualityGates"]}
     findings: list[Finding] = []
     observed: dict[tuple[str, str], dict[str, Any]] = {}
