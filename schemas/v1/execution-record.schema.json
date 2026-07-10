@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fjolnir.dev/schemas/v1/execution-record.schema.json",
+  "title": "FAF v1 Execution Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["recordVersion", "kind", "irBuildId", "status", "outputSummary", "gateResults", "humanReviewRequired"],
+  "properties": {
+    "recordVersion": { "const": "1.0" },
+    "kind": { "const": "ExecutionRecord" },
+    "irBuildId": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "status": { "enum": ["accepted", "blocked", "escalated", "pending-review"] },
+    "outputSummary": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+    "gateResults": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "status", "evidence"],
+        "properties": {
+          "source": { "$ref": "common.schema.json#/$defs/artifactRef" },
+          "status": { "enum": ["passed", "failed", "not-evaluated"] },
+          "evidence": { "$ref": "common.schema.json#/$defs/stringSet" }
+        }
+      }
+    },
+    "humanReviewRequired": { "type": "boolean" }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "outputSummary": "Architecture documentation updated and locally validated.",
+  "gateResults": [{
+    "source": { "id": "urn:faf:gate:scope-and-evidence", "version": "1.0.0" },
+    "status": "passed",
+    "evidence": ["Changes remained in documentation scope", "Automated validation passed"]
+  }]
+}

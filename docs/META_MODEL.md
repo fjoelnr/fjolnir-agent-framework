@@ -11,7 +11,7 @@ rules that cannot be expressed reliably in JSON Schema alone.
 
 ## 2. Artifact classes
 
-FAF v1 defines six schema boundaries:
+FAF v1 defines seven schema boundaries:
 
 - Constitution Artifact: a versioned machine-readable identity and normative
   principle index for the controlling Constitution document.
@@ -22,6 +22,8 @@ FAF v1 defines six schema boundaries:
 - Agent Genome: the versioned composition and resolution root.
 - Resolved IR: normalized compiler input with provenance and no unresolved
   component references.
+- Execution Record: post-execution Quality Gate results, disposition, and human
+  review state tied to one resolved IR build.
 
 Human-facing templates and prompts are derived or authoring artifacts. They are
 not normative machine-readable inputs unless converted into these formats.
@@ -121,6 +123,10 @@ explicitly treats them as runtime inputs.
 Compilers MUST treat the IR as read-only and MUST NOT add authority. Runtime
 specific optimization may change representation, not semantics.
 
+Execution Records are derived after runtime work. Every configured gate needs
+exactly one result. A passed automated gate does not satisfy an independent
+human-review requirement; in that case the record remains `pending-review`.
+
 ## 8. Determinism and canonicalization
 
 Given identical source artifacts and resolver configuration, resolution MUST
@@ -182,6 +188,7 @@ Normative v1 schemas are under `schemas/v1/`:
 - `task-contract.schema.json`
 - `agent-genome.schema.json`
 - `resolved-ir.schema.json`
+- `execution-record.schema.json`
 
 Reference fixtures under `fixtures/v1/` demonstrate structural validity and
 semantic failures. Fixtures are informative until a conformance runner is

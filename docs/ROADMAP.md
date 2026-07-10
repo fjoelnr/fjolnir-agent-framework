@@ -35,7 +35,7 @@ validated into a documented IR without selecting an LLM runtime.
 
 ## Milestone 3: End-to-end reference architecture
 
-Status: Next
+Status: Complete
 
 - Implement schema and policy validation.
 - Resolve one reference Agent Genome and Task Contract into the IR.
@@ -45,6 +45,8 @@ Status: Next
 
 Exit criterion: one existing example passes through the complete architecture
 and produces reproducible, traceable artifacts without gaining hidden authority.
+
+Reference implementation: `faf/` and `docs/REFERENCE_IMPLEMENTATION.md`.
 
 ## Later milestones
 

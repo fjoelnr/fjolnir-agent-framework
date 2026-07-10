@@ -15,7 +15,7 @@
     "requestedCapabilities": [],
     "requestedTools": [{ "id": "urn:faf:tool:production-deployer", "version": "1.0.0" }],
     "requiredOutput": "markdown-report",
-    "qualityGates": [],
+    "qualityGates": [{ "id": "urn:faf:gate:scope-and-evidence", "version": "1.0.0" }],
     "escalationConditions": []
   }
 }

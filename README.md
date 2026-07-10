@@ -35,7 +35,17 @@ docs/       Constitution, operating modes, writing rules, decision logic, and pr
 templates/  Reusable prompt, role, task, and review skeletons
 examples/   Example agent configurations
 tests/      Checklist-based quality and consistency reviews
+schemas/    Normative JSON Schemas for machine-readable FAF artifacts
+fixtures/   Positive and negative conformance examples
+faf/        Executable reference resolver, validator, and compiler
 ```
+
+## Reference Implementation
+
+FAF includes an experimental Python reference implementation for resolving an
+Agent Genome and Task Contract into a deterministic IR, compiling a generic
+runtime representation, and recording Quality Gate results. See
+`docs/REFERENCE_IMPLEMENTATION.md` for installation, commands, and boundaries.
 
 ## Design Principles
 
@@ -86,4 +96,4 @@ tests/      Checklist-based quality and consistency reviews
 
 ## Status
 
-Meta Model stage. The core conceptual architecture, machine-readable Agent Genome and contract schemas, and resolved IR format are baselined. A resolver, semantic validator, runtime compiler, and automated runtime validation remain future work. The framework is not yet a complete assurance method or compliance standard.
+Reference Implementation stage. The architecture baseline, machine-readable schemas, deterministic resolver, semantic validator, generic compiler backend, and Execution Record flow are implemented as an experimental vertical slice. Broader policy semantics, additional backends, operational validation, and governance workflows remain future work. The framework is not yet a complete assurance method or compliance standard.

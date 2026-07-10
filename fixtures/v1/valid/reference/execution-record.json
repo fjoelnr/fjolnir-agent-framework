@@ -1,0 +1,21 @@
+{
+  "recordVersion": "1.0",
+  "kind": "ExecutionRecord",
+  "irBuildId": "sha256:b2eb6ec333f4faa354170dc55c65b8ce3f9e17d770db61c25122375ad0f33ce5",
+  "status": "pending-review",
+  "outputSummary": "Architecture documentation updated and locally validated.",
+  "gateResults": [
+    {
+      "source": {
+        "id": "urn:faf:gate:scope-and-evidence",
+        "version": "1.0.0"
+      },
+      "status": "passed",
+      "evidence": [
+        "Changes remained in documentation scope",
+        "Automated validation passed"
+      ]
+    }
+  ],
+  "humanReviewRequired": true
+}

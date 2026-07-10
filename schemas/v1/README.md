@@ -17,3 +17,7 @@ in this directory by its `$id` before validation.
 
 See `docs/META_MODEL.md` for semantic rules and `fixtures/v1/` for positive and
 negative examples.
+
+`execution-record.schema.json` validates post-execution gate results and review
+state. Execution observations are runtime input rather than governed definition
+artifacts.

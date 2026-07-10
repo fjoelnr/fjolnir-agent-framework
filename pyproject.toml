@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fjolnir-agent-framework"
+version = "0.1.0"
+description = "Reference resolver and compiler for the Fjölnir Agent Framework"
+requires-python = ">=3.11"
+dependencies = ["jsonschema>=4.23,<5"]
+
+[project.scripts]
+faf = "faf.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["faf*"]
