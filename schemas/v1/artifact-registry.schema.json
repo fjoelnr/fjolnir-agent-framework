@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fjolnir.dev/schemas/v1/artifact-registry.schema.json",
+  "title": "FAF v1 Derived Artifact Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["registryVersion", "kind", "catalogBuildId", "artifacts"],
+  "properties": {
+    "registryVersion": { "const": "1.0" },
+    "kind": { "const": "ArtifactRegistry" },
+    "catalogBuildId": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "version", "kind", "name", "lifecycle", "source", "digest"],
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/urn" },
+          "version": { "$ref": "common.schema.json#/$defs/semver" },
+          "kind": { "type": "string", "minLength": 1 },
+          "name": { "$ref": "common.schema.json#/$defs/nonEmptyString" },
+          "lifecycle": { "$ref": "common.schema.json#/$defs/lifecycle" },
+          "source": { "type": "string", "pattern": "^(?!/).+" },
+          "digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+        }
+      }
+    }
+  }
+}

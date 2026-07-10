@@ -22,6 +22,8 @@ an assurance, compliance, safety, or production-readiness certification.
 | Execution accountability | Require one result per gate and preserve human review | Execution Record tests |
 | Automated gates | Verify configured evidence and apply failure disposition | Evidence-set gate tests |
 | Provider backend boundary | Render a deterministic request without provider tool declarations | OpenAI Responses backend fixture and tests |
+| Registry integrity | Index exact artifacts and detect stale or conflicting catalogs | Registry fixture, drift, and duplicate tests |
+| Builder safety | Produce schema-valid definitions and require explicit overwrite | Scaffold tests |
 
 ## Fixture rules
 

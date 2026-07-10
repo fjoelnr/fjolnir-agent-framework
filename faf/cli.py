@@ -9,6 +9,7 @@ from .compiler import compile_generic_text
 from .backends import compile_openai_responses_request
 from .errors import ValidationFailure
 from .execution import create_execution_record
+from .registry import build_registry, scaffold_definition, verify_registry
 from .resolver import Resolver
 
 
@@ -48,6 +49,19 @@ def build_parser() -> argparse.ArgumentParser:
     record.add_argument("--ir", type=Path, required=True)
     record.add_argument("--observations", type=Path, required=True)
     record.add_argument("--output", type=Path)
+    registry_build = sub.add_parser("registry-build")
+    registry_build.add_argument("--catalog", type=Path, required=True)
+    registry_build.add_argument("--output", type=Path, required=True)
+    registry_build.add_argument("--force", action="store_true")
+    registry_verify = sub.add_parser("registry-verify")
+    registry_verify.add_argument("--catalog", type=Path, required=True)
+    registry_verify.add_argument("--registry", type=Path, required=True)
+    scaffold = sub.add_parser("scaffold-definition")
+    scaffold.add_argument("--kind", required=True)
+    scaffold.add_argument("--id", required=True)
+    scaffold.add_argument("--name", required=True)
+    scaffold.add_argument("--output", type=Path, required=True)
+    scaffold.add_argument("--force", action="store_true")
     return parser
 
 
@@ -73,7 +87,7 @@ def main(argv: list[str] | None = None) -> int:
                 ensure_ascii=False,
                 indent=2,
             ) + "\n"
-        else:
+        elif args.command == "record":
             from .schema import SchemaValidator
             validator = SchemaValidator(schema_dir)
             ir = _load(args.ir)
@@ -81,12 +95,30 @@ def main(argv: list[str] | None = None) -> int:
             result = create_execution_record(ir, _load(args.observations))
             validator.validate(result)
             rendered = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
+        elif args.command == "registry-build":
+            result = build_registry(args.catalog, schema_dir)
+            if args.output.exists() and not args.force:
+                raise OSError(f"Refusing to overwrite existing file: {args.output}")
+            args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+            return 0
+        elif args.command == "registry-verify":
+            verify_registry(args.catalog, args.registry, schema_dir)
+            sys.stdout.write("Registry matches the validated catalog.\n")
+            return 0
+        elif args.command == "scaffold-definition":
+            result = scaffold_definition(args.kind, args.id, args.name)
+            from .schema import SchemaValidator
+            SchemaValidator(schema_dir).validate(result)
+            if args.output.exists() and not args.force:
+                raise OSError(f"Refusing to overwrite existing file: {args.output}")
+            args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+            return 0
         if args.output:
             args.output.write_text(rendered, encoding="utf-8", newline="\n")
         else:
             sys.stdout.write(rendered)
         return 0
-    except (ValidationFailure, json.JSONDecodeError, OSError) as error:
+    except (ValidationFailure, json.JSONDecodeError, OSError, ValueError) as error:
         if isinstance(error, ValidationFailure):
             payload = {"valid": False, "findings": [item.as_dict() for item in error.findings]}
         else:

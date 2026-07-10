@@ -1,0 +1,106 @@
+{
+  "registryVersion": "1.0",
+  "kind": "ArtifactRegistry",
+  "catalogBuildId": "sha256:c9432e2c49047b352fc92e464b999fb5d6228f822fcfac72fd9e8f1318a9e2a1",
+  "artifacts": [
+    {
+      "id": "urn:faf:capability:edit-files",
+      "version": "1.0.0",
+      "kind": "Capability",
+      "name": "Edit repository files",
+      "lifecycle": "experimental",
+      "source": "capability.json",
+      "digest": "sha256:3c270c620308374d1da68e03e1a1562b9443c894e6166299661a651ff679187f"
+    },
+    {
+      "id": "urn:faf:constitution:core",
+      "version": "0.1.0",
+      "kind": "Constitution",
+      "name": "Fjölnir Constitution",
+      "lifecycle": "draft",
+      "source": "constitution.json",
+      "digest": "sha256:7e87a9ed29b4d003f6fb0f9f490927b0edd206f75388c843b96423ffaa1e3515"
+    },
+    {
+      "id": "urn:faf:contract:agent:reference-engineer",
+      "version": "1.0.0",
+      "kind": "AgentContract",
+      "name": "Reference Engineering Agent Contract",
+      "lifecycle": "experimental",
+      "source": "agent-contract.json",
+      "digest": "sha256:589f56213d8b45e75a5f40a9ae2cf182ae147572bd790dde0ad1ecfb49f33e14"
+    },
+    {
+      "id": "urn:faf:contract:task:update-docs",
+      "version": "1.0.0",
+      "kind": "TaskContract",
+      "name": "Update architecture documentation",
+      "lifecycle": "experimental",
+      "source": "task-contract.json",
+      "digest": "sha256:ab3174f74f0b225b94a14349a5cabc019586b323d0ff02ad705b0c600aee484c"
+    },
+    {
+      "id": "urn:faf:domain:software-engineering",
+      "version": "1.0.0",
+      "kind": "Domain",
+      "name": "Software Engineering",
+      "lifecycle": "experimental",
+      "source": "domain.json",
+      "digest": "sha256:64a81c67b797bf359af11a4db06610e7c72047c2400229db9943ad7f274f060f"
+    },
+    {
+      "id": "urn:faf:gate:scope-and-evidence",
+      "version": "1.0.0",
+      "kind": "QualityGate",
+      "name": "Scope and evidence gate",
+      "lifecycle": "experimental",
+      "source": "quality-gate.json",
+      "digest": "sha256:3b1c15bf7e613049818a0c114d9f31f673c847c2a420ed17853cf8688335cfac"
+    },
+    {
+      "id": "urn:faf:genome:reference-engineer",
+      "version": "1.0.0",
+      "kind": "AgentGenome",
+      "name": "Reference Engineering Genome",
+      "lifecycle": "experimental",
+      "source": "agent-genome.json",
+      "digest": "sha256:1a46826b03d304d1bdc8927a4ebe83c146439d8cdf6028b8841574ddea1e7a19"
+    },
+    {
+      "id": "urn:faf:policy:deny-documentation",
+      "version": "1.0.0",
+      "kind": "Policy",
+      "name": "Deny documentation policy",
+      "lifecycle": "experimental",
+      "source": "policy-deny-documentation.json",
+      "digest": "sha256:77ff17b184e80627a22dc6f980c4aba818ca257f856939c9c2bd93c03464263a"
+    },
+    {
+      "id": "urn:faf:policy:reference-operations",
+      "version": "1.0.0",
+      "kind": "Policy",
+      "name": "Reference operations policy",
+      "lifecycle": "experimental",
+      "source": "policy.json",
+      "digest": "sha256:efe860b953985d5d29faf744210b3668bcfc028875357106915c51060cb0b733"
+    },
+    {
+      "id": "urn:faf:role:software-engineer",
+      "version": "1.0.0",
+      "kind": "Role",
+      "name": "Software Engineering Agent",
+      "lifecycle": "experimental",
+      "source": "role.json",
+      "digest": "sha256:2613c74d88eb1fb13b7fb0a4e0baa9b2f55a4e13e38d41a801056932ddfd5239"
+    },
+    {
+      "id": "urn:faf:tool:workspace-editor",
+      "version": "1.0.0",
+      "kind": "Tool",
+      "name": "Workspace editor",
+      "lifecycle": "experimental",
+      "source": "tool.json",
+      "digest": "sha256:0a1b602233bf140b1219ac81cf45e9cbd71758d47934098a2826312859c19703"
+    }
+  ]
+}

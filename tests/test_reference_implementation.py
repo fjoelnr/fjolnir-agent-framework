@@ -2,6 +2,10 @@ from __future__ import annotations
 
 import json
 from copy import deepcopy
+from contextlib import redirect_stderr
+from io import StringIO
+from shutil import copytree
+from tempfile import TemporaryDirectory
 import unittest
 from pathlib import Path
 
@@ -12,6 +16,9 @@ from faf.errors import ValidationFailure
 from faf.execution import create_execution_record
 from faf.policy import evaluate_policies
 from faf.resolver import Resolver
+from faf.registry import build_registry, scaffold_definition, verify_registry
+from faf.schema import SchemaValidator
+from faf.cli import main as cli_main
 
 ROOT = Path(__file__).resolve().parents[1]
 REFERENCE = ROOT / "fixtures" / "v1" / "valid" / "reference"
@@ -161,6 +168,63 @@ class ConformanceFixtureTests(unittest.TestCase):
         }
         actual.add("duplicate-identity/")
         self.assertEqual(declared, actual)
+
+
+class ArtifactRegistryTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.schemas = ROOT / "schemas" / "v1"
+
+    def test_reference_registry_is_deterministic_and_valid(self) -> None:
+        registry = build_registry(REFERENCE, self.schemas)
+        self.assertEqual(registry, load(REFERENCE / "faf-registry.json"))
+        SchemaValidator(self.schemas).validate(registry)
+        self.assertRegex(registry["catalogBuildId"], r"^sha256:[0-9a-f]{64}$")
+
+    def test_registry_detects_drift(self) -> None:
+        with TemporaryDirectory() as temporary:
+            catalog = Path(temporary) / "catalog"
+            copytree(REFERENCE, catalog)
+            registry_path = catalog / "faf-registry.json"
+            registry_path.write_text(json.dumps(build_registry(catalog, self.schemas)), encoding="utf-8")
+            policy = load(catalog / "policy.json")
+            policy["metadata"]["name"] = "Changed policy"
+            (catalog / "policy.json").write_text(json.dumps(policy), encoding="utf-8")
+            with self.assertRaises(ValidationFailure) as raised:
+                verify_registry(catalog, registry_path, self.schemas)
+            self.assertIn("FAF-REGISTRY-STALE", {item.code for item in raised.exception.findings})
+
+    def test_registry_rejects_duplicate_identity_catalog(self) -> None:
+        with self.assertRaises(ValidationFailure) as raised:
+            build_registry(ROOT / "fixtures" / "v1" / "invalid" / "duplicate-identity", self.schemas)
+        self.assertIn("FAF-REF-DUPLICATE-IDENTITY", {item.code for item in raised.exception.findings})
+
+    def test_scaffolds_are_schema_valid_for_every_definition_kind(self) -> None:
+        validator = SchemaValidator(self.schemas)
+        for kind in ("Policy", "ReasoningPack", "Capability", "Role", "Domain", "Tool", "QualityGate"):
+            with self.subTest(kind=kind):
+                artifact = scaffold_definition(kind, f"urn:faf:test:{kind.lower()}", f"{kind} scaffold")
+                validator.validate(artifact)
+                self.assertEqual("draft", artifact["metadata"]["lifecycle"])
+
+    def test_scaffold_refuses_overwrite_without_force(self) -> None:
+        with TemporaryDirectory() as temporary:
+            output = Path(temporary) / "policy.json"
+            output.write_text("original", encoding="utf-8")
+            with redirect_stderr(StringIO()):
+                result = cli_main([
+                    "scaffold-definition", "--kind", "Policy", "--id", "urn:faf:test:policy",
+                    "--name", "Test policy", "--output", str(output),
+                ])
+            self.assertEqual(2, result)
+            self.assertEqual("original", output.read_text(encoding="utf-8"))
+            with redirect_stderr(StringIO()):
+                result = cli_main([
+                    "scaffold-definition", "--kind", "Policy", "--id", "urn:faf:test:policy",
+                    "--name", "Test policy", "--output", str(output), "--force",
+                ])
+            self.assertEqual(0, result)
+            SchemaValidator(self.schemas).validate(load(output))
 
 
 if __name__ == "__main__":

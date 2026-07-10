@@ -23,6 +23,7 @@ SCHEMA_BY_KIND = {
     "AgentGenome": "agent-genome.schema.json",
     "ResolvedAgentTask": "resolved-ir.schema.json",
     "ExecutionRecord": "execution-record.schema.json",
+    "ArtifactRegistry": "artifact-registry.schema.json",
 }
 
 

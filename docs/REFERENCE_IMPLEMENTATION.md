@@ -17,6 +17,7 @@ The implementation provides:
 - Explainable Policy evaluation that can deny facts or require human review.
 - Deterministic `evidence-set` Quality Gate evaluation.
 - A pure OpenAI Responses request renderer with no provider API execution.
+- A derived local Artifact Registry and safe reusable-definition scaffolds.
 
 ## Install
 
@@ -64,6 +65,23 @@ faf record \
   --ir resolved-ir.json \
   --observations fixtures/v1/valid/reference/execution-observations.json \
   --output execution-record.json
+```
+
+## Build and verify an Artifact Registry
+
+```text
+faf registry-build --catalog artifacts --output artifacts/faf-registry.json
+faf registry-verify --catalog artifacts --registry artifacts/faf-registry.json
+```
+
+## Scaffold a reusable definition
+
+```text
+faf scaffold-definition \
+  --kind Policy \
+  --id "urn:faf:policy:example" \
+  --name "Example policy" \
+  --output artifacts/example-policy.json
 ```
 
 Passing automated gates does not override a human-review requirement. The

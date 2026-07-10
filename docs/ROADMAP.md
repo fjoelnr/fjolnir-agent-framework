@@ -82,7 +82,7 @@ cannot expand Agent Contract or Task Contract authority.
 
 ## Milestone 6: Deterministic Quality Gate Evaluation
 
-Status: In progress
+Status: Complete
 
 - Define a bounded automated evaluator model.
 - Preserve manual Gate behavior where no evaluator is declared.
@@ -105,3 +105,16 @@ Status: Complete
 
 Exit criterion: a provider request is reproducible from the IR and cannot add
 provider tools, capabilities, or authority absent from FAF contracts.
+
+## Milestone 8: Local Artifact Registry and Definition Builder
+
+Status: Complete
+
+- Build a deterministic, derived Registry over a validated local catalog.
+- Verify Registry integrity and staleness against source artifacts.
+- Scaffold valid reusable Definition Artifacts without hidden defaults.
+- Prevent accidental Builder overwrites.
+- Keep contracts and genomes manual until explicit authority composition can be guided.
+
+Exit criterion: a team can inventory a catalog, detect Registry drift, and
+create valid reusable definitions without treating the Registry as authority.
