@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from faf.compiler import compile_generic_text
+from faf.catalog import Catalog
 from faf.errors import ValidationFailure
 from faf.execution import create_execution_record
 from faf.resolver import Resolver
@@ -67,6 +68,41 @@ class ReferenceImplementationTests(unittest.TestCase):
         with self.assertRaises(ValidationFailure) as raised:
             create_execution_record(ir, observations)
         self.assertIn("FAF-GATE-RESULT-DUPLICATE", {item.code for item in raised.exception.findings})
+
+
+class ConformanceFixtureTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.invalid = ROOT / "fixtures" / "v1" / "invalid"
+        cls.reference = REFERENCE
+        cls.resolver = Resolver.from_paths(REFERENCE, ROOT / "schemas" / "v1")
+        cls.genome = load(REFERENCE / "agent-genome.json")
+        cls.task = load(REFERENCE / "task-contract.json")
+        cls.expectations = load(cls.invalid / "expectations.json")
+
+    def test_declared_invalid_fixtures_produce_exact_error_codes(self) -> None:
+        for relative, expectation in self.expectations.items():
+            with self.subTest(fixture=relative):
+                expected = set(expectation["semanticErrors"])
+                with self.assertRaises(ValidationFailure) as raised:
+                    if relative.endswith("/"):
+                        Catalog.load(self.invalid / relative)
+                    elif relative.endswith(".agent-genome.json"):
+                        self.resolver.resolve(load(self.invalid / relative), self.task)
+                    else:
+                        self.resolver.resolve(self.genome, load(self.invalid / relative))
+                actual = {finding.code for finding in raised.exception.findings}
+                self.assertEqual(expected, actual)
+
+    def test_expectation_manifest_covers_all_negative_inputs(self) -> None:
+        declared = set(self.expectations)
+        actual = {
+            path.relative_to(self.invalid).as_posix()
+            for path in self.invalid.glob("*.json")
+            if path.name != "expectations.json"
+        }
+        actual.add("duplicate-identity/")
+        self.assertEqual(declared, actual)
 
 
 if __name__ == "__main__":

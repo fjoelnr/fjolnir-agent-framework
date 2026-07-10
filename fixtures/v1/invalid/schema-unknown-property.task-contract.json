@@ -1,0 +1,22 @@
+{
+  "specVersion": "1.0",
+  "kind": "TaskContract",
+  "id": "urn:faf:contract:task:schema-invalid",
+  "version": "1.0.0",
+  "metadata": { "name": "Schema invalid example", "lifecycle": "draft" },
+  "spec": {
+    "agentContract": { "id": "urn:faf:contract:agent:reference-engineer", "version": "1.0.0" },
+    "taskType": "documentation-change",
+    "objective": "Demonstrate schema rejection.",
+    "inputs": [],
+    "constraints": [],
+    "acceptanceCriteria": [],
+    "riskLevel": "low",
+    "requestedCapabilities": [],
+    "requestedTools": [],
+    "requiredOutput": "markdown-report",
+    "qualityGates": [],
+    "escalationConditions": [],
+    "implicitAuthority": true
+  }
+}

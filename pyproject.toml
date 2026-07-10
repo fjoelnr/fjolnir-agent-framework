@@ -6,11 +6,24 @@ build-backend = "setuptools.build_meta"
 name = "fjolnir-agent-framework"
 version = "0.1.0"
 description = "Reference resolver and compiler for the Fjölnir Agent Framework"
+readme = "README.md"
+license = "LicenseRef-Proprietary"
+license-files = ["LICENSE"]
 requires-python = ">=3.11"
 dependencies = ["jsonschema>=4.23,<5"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
 
 [project.scripts]
 faf = "faf.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["faf*"]
+
+[tool.setuptools.data-files]
+"share/faf/schemas/v1" = ["schemas/v1/*.schema.json"]

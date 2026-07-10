@@ -23,6 +23,9 @@ Use Python 3.11 or newer:
 python -m pip install -e .
 ```
 
+The distribution includes the v1 schemas. `--schemas PATH` may override them for
+development or conformance testing.
+
 ## Resolve a reference task
 
 ```text

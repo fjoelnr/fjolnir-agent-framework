@@ -46,6 +46,8 @@ FAF includes an experimental Python reference implementation for resolving an
 Agent Genome and Task Contract into a deterministic IR, compiling a generic
 runtime representation, and recording Quality Gate results. See
 `docs/REFERENCE_IMPLEMENTATION.md` for installation, commands, and boundaries.
+Conformance requirements and the negative-fixture matrix are documented in
+`docs/CONFORMANCE.md`.
 
 ## Design Principles
 

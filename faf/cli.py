@@ -15,9 +15,21 @@ def _load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _schema_dir(explicit: Path | None) -> Path:
+    if explicit is not None:
+        return explicit
+    workspace = Path("schemas/v1")
+    if workspace.is_dir():
+        return workspace
+    installed = Path(sys.prefix) / "share" / "faf" / "schemas" / "v1"
+    if installed.is_dir():
+        return installed
+    raise OSError("FAF schemas were not found; pass --schemas explicitly.")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="faf")
-    parser.add_argument("--schemas", type=Path, default=Path("schemas/v1"))
+    parser.add_argument("--schemas", type=Path)
     sub = parser.add_subparsers(dest="command", required=True)
     resolve = sub.add_parser("resolve")
     resolve.add_argument("--catalog", type=Path, required=True)
@@ -37,18 +49,19 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
+        schema_dir = _schema_dir(args.schemas)
         if args.command == "resolve":
-            resolver = Resolver.from_paths(args.catalog, args.schemas)
+            resolver = Resolver.from_paths(args.catalog, schema_dir)
             result = resolver.resolve(_load(args.genome), _load(args.task))
             rendered = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
         elif args.command == "compile":
             result = _load(args.ir)
             from .schema import SchemaValidator
-            SchemaValidator(args.schemas).validate(result)
+            SchemaValidator(schema_dir).validate(result)
             rendered = compile_generic_text(result)
         else:
             from .schema import SchemaValidator
-            validator = SchemaValidator(args.schemas)
+            validator = SchemaValidator(schema_dir)
             ir = _load(args.ir)
             validator.validate(ir)
             result = create_execution_record(ir, _load(args.observations))

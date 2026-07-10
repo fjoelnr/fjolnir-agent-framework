@@ -55,3 +55,4 @@ Use [0000-template.md](0000-template.md) for new records.
 | [0001](0001-freeze-core-architecture-meta-model.md) | Freeze the core architecture meta-model | Accepted |
 | [0002](0002-use-json-schema-and-a-resolved-ir.md) | Use JSON Schema source artifacts and a resolved IR | Accepted |
 | [0003](0003-reference-implementation-and-build-identity.md) | Reference implementation and build identity | Accepted |
+| [0004](0004-conformance-is-versioned-evidence-not-certification.md) | Conformance is versioned evidence, not certification | Accepted |

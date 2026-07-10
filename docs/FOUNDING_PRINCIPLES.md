@@ -1,5 +1,5 @@
 # Fjölnir Agent Framework (FAF)
-## Project Charter
+## Founding Principles
 
 Version: 0.1
 
@@ -7,11 +7,11 @@ Version: 0.1
 
 # Purpose
 
-This document captures the original vision, architectural philosophy, design principles, and long-term goals of the Fjölnir Agent Framework (FAF).
+This document preserves the original vision, architectural philosophy, design principles, and long-term goals of the Fjölnir Agent Framework (FAF).
 
 It is intended to preserve project intent across contributors, AI agents, and future maintainers.
 
-The Charter is the highest-level design document after the Constitution.
+The current project mandate is maintained in `PROJECT_CHARTER.md`. The Constitution remains the highest-precedence normative document.
 
 ---
 

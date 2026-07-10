@@ -2,5 +2,33 @@
   "unauthorized-tool.task-contract.json": {
     "schemaValid": true,
     "semanticErrors": ["FAF-AUTH-TOOL-NOT-ALLOWED"]
+  },
+  "unauthorized-capability.task-contract.json": {
+    "schemaValid": true,
+    "semanticErrors": ["FAF-AUTH-CAPABILITY-NOT-ALLOWED"]
+  },
+  "missing-required-gate.task-contract.json": {
+    "schemaValid": true,
+    "semanticErrors": ["FAF-GATE-REQUIRED-MISSING"]
+  },
+  "disallowed-task-type.task-contract.json": {
+    "schemaValid": true,
+    "semanticErrors": ["FAF-AUTH-TASK-TYPE-NOT-ALLOWED"]
+  },
+  "missing-reference.agent-genome.json": {
+    "schemaValid": true,
+    "semanticErrors": ["FAF-REF-NOT-FOUND"]
+  },
+  "wrong-kind.agent-genome.json": {
+    "schemaValid": true,
+    "semanticErrors": ["FAF-KIND-MISMATCH"]
+  },
+  "schema-unknown-property.task-contract.json": {
+    "schemaValid": false,
+    "semanticErrors": ["FAF-SCHEMA-INVALID"]
+  },
+  "duplicate-identity/": {
+    "schemaValid": true,
+    "semanticErrors": ["FAF-REF-DUPLICATE-IDENTITY"]
   }
 }

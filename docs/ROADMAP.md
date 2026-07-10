@@ -48,6 +48,20 @@ and produces reproducible, traceable artifacts without gaining hidden authority.
 
 Reference implementation: `faf/` and `docs/REFERENCE_IMPLEMENTATION.md`.
 
+## Milestone 4: Conformance and CI hardening
+
+Status: Complete
+
+- Maintain manifest-driven positive and negative conformance fixtures.
+- Isolate structural, identity, kind, authority, and gate failures.
+- Test supported Python versions on every push and pull request.
+- Build an installable distribution in CI.
+- Ensure installed CLI operation does not depend on repository-relative schemas.
+- Establish explicit compatibility-claim requirements.
+
+Exit criterion: the reference implementation, packaged CLI, schemas, fixtures,
+and documentation are checked reproducibly by local tests and CI.
+
 ## Later milestones
 
 - Additional compiler backends.
